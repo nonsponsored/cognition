@@ -1,0 +1,33 @@
+/* Card Grid */
+.card-grid {
+    display: grid;
+    gap: var(--gap);
+    grid-template-columns: repeat(var(--columns), 1fr);
+    margin: 0 auto var(--global-bottom-space);
+    max-width: var(--max-width-content);
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .card-grid {
+        --columns: 2;
+    }
+}
+
+@media screen and(max-width: 1024px) {
+    .card-grid {
+        --gap: 30px 20px;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    .card-grid {
+        --columns: 3;
+        --gap: 30px;
+    }
+}
+
+/* Card List */
+.card-list {
+    margin: 0 auto var(--global-bottom-space);
+    max-width: var(--max-width-content);
+}

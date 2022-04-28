@@ -1,0 +1,22 @@
+---
+import DocumentHead from '../components/DocumentHead.astro';
+import GlobalHeader from '../components/GlobalHeader.astro'
+import GlobalFooter from '../components/GlobalFooter.astro'
+
+const { page_title, og_title, og_description, og_image } = Astro.props
+---
+
+<html lang="en">
+    <head>
+		<DocumentHead page_title={page_title} og_title={og_title} og_description={og_description} og_image={og_image} />
+	</head>
+    <body>
+        <GlobalHeader/>
+        
+        <main id="content">
+            <slot />
+        </main>
+
+        <GlobalFooter/>
+    </body>
+</html>

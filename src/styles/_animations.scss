@@ -1,0 +1,39 @@
+/* Fade-in Animation: opacity 0 ot 1 */
+[data-animation-fadein] {
+	--fade-in-duration: 0ms;
+	animation: fadeIn var(--fade-in-duration, 0) var(--global-easing) forwards;
+}
+
+/* Font Grow Animation: increases weight from 200 to 800 */
+[data-animation-fontgrow] {
+    --grow-duration: 0ms;
+    animation: fontGrow var(--grow-duration, 0) var(--global-easing) forwards;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	[data-animation-fadein] {
+		--fade-in-duration: 750ms;
+	}
+
+    [data-animation-fontgrow] {
+		--grow-duration: 1s;
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes fontGrow {
+	0% {
+		font-variation-settings: "wght" 200;
+	}
+	100% {
+		font-variation-settings: "wght" 800;
+	}
+}

@@ -1,0 +1,15 @@
+{
+	"name": "Cognition",
+	"version": "1.0.0",
+	"private": true,
+	"scripts": {
+		"scss": "sass src/styles:public/css --no-source-map --style compressed",
+		"dev": "astro dev",
+		"build": "yarn scss & astro build",
+		"preview": "astro preview"
+	},
+	"devDependencies": {
+		"astro": "^1.0.0-beta.19",
+		"sass": "^1.50.0"
+	}
+}

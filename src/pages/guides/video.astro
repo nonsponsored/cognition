@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import PageHeader from '../../components/PageHeader.astro'
+import Video from '../../components/Video.astro'
+
+const { page_title='Video' } = Astro.props
+---
+
+<BaseLayout page_title={page_title}>
+
+    <PageHeader page_title={page_title}/>
+
+    <Video
+        action_color="var(--color-accent)"
+        iframe_src="https://www.youtube-nocookie.com/embed/dsTXcSeAZq8"
+        video_description="Astro in 100 Seconds"
+        poster="/img/generic/poster-dark.png"
+        poster_alt="Astro Logo"
+    />
+
+</BaseLayout>

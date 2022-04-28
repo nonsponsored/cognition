@@ -1,0 +1,118 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import PageHeader from '../../components/PageHeader.astro'
+import Card from '../../components/Card.astro'
+
+const { page_title='Card' } = Astro.props
+---
+
+<BaseLayout page_title={page_title}>
+
+    <PageHeader page_title={page_title}/>
+
+    <div class="rte">
+        <h2>Card Grid</h2>
+    </div>
+
+    <div class="card-grid">
+        <Card
+            link="#"
+            image="/img/generic/460x345.png"
+            image_alt="Placeholder image."
+            title="Article Name"
+            meta_author="John Q. Public"
+            meta_time="May 1, 2022"
+            meta_text="An amazing description could appear here."
+        />
+
+        <Card
+            link="#"
+            image="/img/generic/460x345.png"
+            image_alt="Placeholder image."
+            title="Product Name"
+            meta_author=""
+            meta_time=""
+            meta_text="$100"
+        />
+
+        <Card
+            link="#"
+            image="/img/generic/460x345.png"
+            image_alt="Placeholder image."
+            title="Article Name"
+            meta_author="John Q. Public"
+            meta_time="May 1, 2022"
+            meta_text=""
+        />
+
+        <Card
+            link="#"
+            image="/img/generic/460x345.png"
+            image_alt="Placeholder image."
+            title="Product Name"
+            meta_author=""
+            meta_time=""
+            meta_text="$100"
+        />
+
+        <Card
+            link="#"
+            image="/img/generic/460x345.png"
+            image_alt="Placeholder image."
+            title="Long but Still Amazing Article Name"
+            meta_author="John Q. Public"
+            meta_time="May 1, 2022"
+            meta_text=""
+        />
+
+        <Card
+            link="#"
+            image="/img/generic/460x345.png"
+            image_alt="Placeholder image."
+            title="Product Name"
+            meta_author=""
+            meta_time=""
+            meta_text="$100"
+        />
+    </div>
+
+    <div class="rte">
+        <h2>Card List</h2>
+    </div>
+
+    <ul class="card-list">
+        <li>
+            <Card
+                link="#"
+                title="Article Name"
+                meta_author="John Q. Public"
+                meta_time="May 1, 2022"
+                meta_text="An amazing description could appear here."
+            />
+        </li>
+        <li>
+           <Card
+                link="#"
+                title="Long but Still Amazing Product Name"
+                meta_text="$100"
+            />
+        </li>
+        <li>
+            <Card
+                link="#"
+                image_alt="Placeholder image."
+                title="Article Name"
+                meta_author="John Q. Public"
+                meta_time="May 1, 2022"
+            />
+        </li>
+        <li>
+            <Card
+                link="#"
+                title="Product Name"
+                meta_text="$100"
+            />
+        </li>
+    </ul>
+
+</BaseLayout>

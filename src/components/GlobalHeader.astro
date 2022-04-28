@@ -1,0 +1,96 @@
+---
+const currentPage = new URL(Astro.request.url);
+---
+
+<a href="#content" id="skip-navigation">Skip Navigation</a>
+
+<header class="global-header" data-global-header>
+    <div class="global-header__content">
+        <button type="button" class="menu-button" data-global-menu>Open Navigation</button>
+    
+        <a href="/" class="global-header__logo"><img src="/img/global/logo.svg" alt="Cognition Logo" /></a>
+        
+        <nav class="global-header__nav" data-global-nav>
+            <ul class="global-header__nav-list">
+                <li>
+                    <a href="/guides/" aria-current={currentPage.pathname === '/guides/' ? 'page' : undefined} data-has-subnav>Guides</a>
+                    <ul class="global-header__nav-sublist">
+                        <!-- 
+                            - Duplicate the top level link if it has a sub-list, so it's accessible in the small screen menu.
+                            - Set up aria-current for every sub-list link.
+                        -->
+                        <li><a href="/guides/" aria-current={currentPage.pathname === '/guides/' ? 'page' : undefined}>Guides Landing</a></li>
+                        <li><a href="/guides/card/" aria-current={currentPage.pathname === '/guides/card/' ? 'page' : undefined}>Card</a></li>
+                        <li><a href="/guides/typography/" aria-current={currentPage.pathname === '/guides/typography/' ? 'page' : undefined}>Typography</a></li>
+                        <li><a href="/guides/video/" aria-current={currentPage.pathname === '/guides/video/' ? 'page' : undefined}>Video</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#link-not-defined" aria-current={currentPage.pathname === '/section-2' ? 'page' : undefined}>Section 2</a>
+                </li>
+                <li>
+                    <a href="#link-not-defined" aria-current={currentPage.pathname === '/section-3' ? 'page' : undefined}>Section 3</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+<script>
+class GlobalHeader {
+	constructor(selector) {
+		// Define elements
+        this.header = document.querySelector(selector)
+        this.nav = this.header.querySelector('[data-global-nav]')
+        this.menuButton = this.header.querySelector('[data-global-menu]')
+        this.mq = window.matchMedia('(max-width: 1024px)')
+
+        // Reset on resize
+        if (this.mq?.addEventListener) {
+            this.mq.addEventListener('change', () => {
+                this.resetHeader()
+            })
+        } else {
+            // For browsers that don't support addEventListener on the MediaQueryList object
+            this.mq.addListener( () => {
+                this.resetHeader()
+            })
+        }
+        
+        // Suppress top level links on small screen if they have a sub-nav, so sub-nav can be accessed
+        this.nav.addEventListener('click', (e) => {
+            if (e.target.matches('[data-has-subnav]') && this.mq.matches){
+                e.preventDefault()
+                e.target.classList.toggle('open--sublist')
+            }
+        });
+
+        // Menu Button : Show / Hide Small Screen Nav
+        this.menuButton.addEventListener('click', () => {
+            // Toggle aria
+            if(!this.menuButton.hasAttribute('aria-expanded')) {
+                this.menuButton.setAttribute('aria-expanded','true');	
+            } else {
+                this.menuButton.removeAttribute('aria-expanded');
+            }
+        })
+        
+        // Escape Key  : Show / Hide Small Screen Nav
+        document.addEventListener('keydown', (e) => {
+            if ( this.menuButton.hasAttribute('aria-expanded') ) {
+                if (e.key == 'Escape') {
+                    // Remove aria to close
+                    this.menuButton.removeAttribute('aria-expanded');
+                }
+            }
+        })
+	}
+
+    // Reset
+    resetHeader() {
+        this.menuButton.removeAttribute('aria-expanded');
+    }
+}
+new GlobalHeader('[data-global-header]')
+</script>

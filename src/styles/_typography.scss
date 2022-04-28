@@ -1,0 +1,137 @@
+@font-face {
+	font-display: swap;
+	font-family: "ManropeGX";
+	font-style: normal;
+	font-weight: 200 800;
+	src: url("/fonts/Manrope[wght].woff2") format("woff2-variations");
+}
+
+h1, h2, h3, h4, h5, h6, p, li {
+	--safari-fix: 0vw; /* allows Safari to scale on resize */
+	font-size: clamp(
+		calc(var(--min-font-size) * 1rem),
+		calc(
+			(var(--min-font-size) * 1rem) +
+				(var(--max-font-size) - var(--min-font-size)) *
+				(
+					(100vw - (var(--min-viewport) * 1rem)) /
+						(var(--max-viewport) - var(--min-viewport))
+				)
+		),
+		calc(var(--max-font-size) * 1rem)
+	);
+	font-weight: normal;
+	min-height: var(--safari-fix);
+}
+
+
+/* Scale Ratio: 1.333 Perfect fourth */
+h1,
+.text-1 {
+	--min-font-size: 2.81;
+	--max-font-size: 4.21;
+
+	color: var(--color-primary-headers);
+	font-variation-settings: "wght" 800;
+	margin: 0 0 0.2em;
+}
+h2,
+.text-2 {
+	--min-font-size: 2.11;
+	--max-font-size: 3.16;
+
+	color: var(--color-primary-headers);
+    font-variation-settings: "wght" 650;
+	margin: 0 0 0.3em;
+}
+h3,
+.text-3 {
+	--min-font-size: 1.58;
+	--max-font-size: 2.37;
+
+	color: var(--color-primary-headers);
+    font-variation-settings: "wght" 650;
+	margin: 0 0 0.4em;
+}
+h4,
+.text-4 {
+	--min-font-size: 1.19;
+	--max-font-size: 1.78;
+
+	color: var(--color-primary-headers);
+    font-variation-settings: "wght" 650;
+	margin: 0 0 0.5em;
+}
+h5,
+.text-5 {
+	--min-font-size: 1;
+	--max-font-size: 1.33;
+
+	color: var(--color-primary-headers);
+    font-variation-settings: "wght" 650;
+	margin: 0 0 0.5em;
+}
+h6,
+.text-6 {
+	--min-font-size: 0.834;
+	--max-font-size: 1.25;
+
+	color: var(--color-primary-headers);
+    font-variation-settings: "wght" 650;
+	margin: 0 0 0.5em;
+}
+
+ol,
+ul {
+	margin: 0 0 1.5em;
+    padding-inline-start: 0;
+
+    li {
+        --min-font-size: 1;
+	    --max-font-size: 1.25;
+
+        margin-inline-start: 1.5em;
+        padding-inline-start: 0.25em;
+    }
+}
+ul {
+    list-style: none;
+}
+ol {
+    li::marker {
+        font-size: 0.75em;
+    }
+}
+ul:not([class]) {
+    list-style: initial;
+
+    li::marker {
+        color: rgba(49, 49, 49, 0.5);
+        list-style-type: '•';
+    }
+}
+
+p {
+	--min-font-size: 1;
+	--max-font-size: 1.25;
+
+	margin: 0 0 1.5em;
+}
+
+b,
+strong {
+	font-variation-settings: "wght" 650;
+}
+
+.warning {
+	background-color: var(--color-warning);
+	color: #fff;
+	font-variation-settings: "wght" 650;
+	padding: 10px;
+	text-align: center;
+}
+
+.rte {
+    margin: 0 auto var(--global-bottom-space);
+	width: min(var(--max-width-content), 100%);
+}

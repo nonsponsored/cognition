@@ -1,0 +1,335 @@
+---
+const { action_color, iframe_src, poster, poster_alt, video_description } = Astro.props
+---
+
+<div class="video-block" data-video style={'--action-color: ' + action_color}>
+    <div class="video-block__viewport">
+        { iframe_src && poster && poster_alt && video_description ? 
+        <a href={iframe_src}>
+            <figure>
+                <picture>
+                    <img src={poster} alt={poster_alt}/>
+                </picture>
+                <figcaption class="text-6"><span>{video_description}</span></figcaption>
+            </figure>
+        </a>
+        <button type="button" class="video-block__close">Close</button>
+        :
+        <p class="warning">Data is missing.</p>
+        }
+    </div>
+</div>
+
+
+<style is:global lang="scss">
+.video-block {
+    --global-bottom-space: 60px;
+
+    margin: 0 auto var(--global-bottom-space);
+    position: relative;
+    width: 100%;
+    
+    &__viewport {
+        display: grid;
+        margin: 0 auto;
+        place-items: center;
+        position: relative;
+        width: fit-content;
+        z-index: 2;
+
+        > * {
+            grid-area: 1 / -1;
+        }
+    }
+
+    a {
+        display: block;
+        margin: 0 auto;
+        overflow: hidden;
+        position: relative;
+        text-decoration: none;
+        z-index: 2;
+
+        /* Focus */
+        &:focus {
+
+            figcaption::before {
+                background-color: var(--action-color);
+                background-image: var(--icon-light);
+            }
+        }
+    }
+
+    figure {
+        border-radius: var(--global-border-radius);
+        display: grid;
+        margin: 0 auto;
+        overflow: hidden;
+
+        > * {
+            grid-area: 1 / -1;
+        }
+    }
+
+    picture,
+    img {
+        display: block;
+    }
+
+    img {
+        aspect-ratio: 16 / 9;
+    }
+
+    figcaption {
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.25);
+        color: var(--color-lightest);
+        display: flex;
+        margin: 0;
+        padding: 10px;
+        place-self: end;
+        position: relative;
+        width: 100%;
+        z-index: 1;
+
+        /* Truncate text that's too long */
+        span {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
+            overflow: hidden;
+        }
+    
+        /* Play Icon */
+        &::before {
+            --icon-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='16'%3E%3Cpath fill-rule='evenodd' fill='(%23000)' d='M0 1l10 7-10 7z'/%3E%3C/svg%3E");
+            --icon-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='16'%3E%3Cpath fill-rule='evenodd' fill='%23fff' d='M0 1l10 7-10 7z'/%3E%3C/svg%3E");
+
+            background: var(--color-lightest) var(--icon-dark) center center no-repeat;
+            border-radius: 50%;
+            content: '';
+            display: inline-flex;
+            flex-shrink: 0;
+            height: 2.25em;
+            margin: 0 15px 0 0;
+            overflow: hidden;
+            transition: background 350ms var(--global-easing);
+            width: 2.25em;
+            z-index: 1;
+        }
+    }
+
+    iframe {
+        background: var(--color-darkest);
+		border: 0;
+        border-radius: var(--global-border-radius);
+        height: 100%;
+        opacity: 0;
+        position: absolute; // This is only needed for Safari 13 because height:100% blows iframe out of container.
+        transition: opacity 500ms ease-in-out;
+        width: 100%;
+		z-index: 3;
+    }
+    .iframe--show {
+        opacity: 1;
+    }
+
+    /* CLose Button */
+    &__close {
+        --scale: 1;
+        --spacing-top: 10px;
+
+        background-color: var(--action-color);
+        border: 0;
+        border-radius: 50%;
+        cursor: pointer;
+        display: block;
+        font-size: 0;
+        height: 44px;
+        opacity: 0;
+        overflow: hidden;
+        place-self: end center;
+        position: relative;
+        transition: opacity 500ms var(--global-easing), transform 500ms var(--global-easing), visibility 0s 500ms;
+        visibility: hidden;
+        width: 44px;
+        white-space: nowrap;
+        z-index: 1;
+
+        &--show {
+            opacity: 1;
+            transform: scale(var(--scale)) translateY(calc(100% + var(--spacing-top)));
+            transition-delay: 500ms, 500ms, 0s;
+            visibility: visible;
+        }
+
+        &::after,
+        &::before {
+            background-color: var(--color-lightest);
+            content: '';
+            display: block;
+            height: 21px;
+            left: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%,-50%) rotate(var(--degree, 0));
+            width: 2px;
+        }
+
+        &::after {
+            --degree: 45deg;
+        }
+
+        &::before {
+            --degree: -45deg;
+        }
+    }
+}
+
+@media screen and (max-height: 768px) {
+    .video-block {
+        img {
+            max-height: 70vh;
+        }
+    }
+}
+
+/* Small Screen Only */
+@media screen and (max-width: 767px) {
+    .video-block__close {
+        --scale: 0.8;
+        --spacing-top: 18px;
+    }
+}
+
+/* Hover State */
+@media(hover:hover) and (pointer:fine) {
+    .video-block a:hover {
+        figcaption::before {
+            background-color: var(--action-color);
+            background-image: var(--icon-light);
+        }
+    }
+}
+</style>
+
+<script>
+class VideoBlock {
+	constructor(block) {
+		// Only if exists
+		if (!block) {
+			return;
+		}
+
+		// Set up elements
+		this.block = block;
+		this.viewport = this.block.querySelector('.video-block__viewport');
+		this.link = this.block.querySelector('a');
+		this.linkURL = this.link.getAttribute('href');
+		this.closeButton = this.block.querySelector('.video-block__close');
+
+		// Construct the iframe src
+		this.constructURL();
+
+		// Create the iframe
+		this.createIframe = document.createElement('iframe');
+		this.createIframe.setAttribute(
+			'allow',
+			'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
+		);
+		this.createIframe.setAttribute('allowfullscreen', 'true');
+
+		// Initialize it
+		this.init();
+	}
+
+	constructURL() {
+		// Construct the iframe URL
+		const urlObject = new URL(this.linkURL);
+		this.iframe_src;
+
+		// Twitch URL Format: https://player.twitch.tv/?video=VIDEO_ID
+		// Vimeo URL Format: https://player.vimeo.com/video/VIDEO_ID
+		// YouTube URL Format: https://www.youtube-nocookie.com/embed/VIDEO_ID
+
+		// If YouTube
+		if (urlObject.hostname.match('vimeo'))
+			this.iframe_src =
+				this.linkURL +
+				'&color=31274a&autoplay=1&autopause=0&title=0&byline=0&playsinline=0&portrait=0';
+		// If YouTube
+		else if (urlObject.hostname.match('youtube'))
+			this.iframe_src = this.linkURL + '?autoplay=1&rel=0&autohide=1&showinfo=0';
+		// If Twitch
+		else if (urlObject.hostname.match('twitch'))
+			this.iframe_src = this.linkURL + '&parent=' + window.location.host;
+	}
+
+	getAppendedIframe() {
+		// Define iframe
+		this.iframe = this.viewport.querySelector('iframe');
+	}
+
+    removeIframe(iframe) {
+        const button = iframe.parentNode.parentNode.querySelector('.video-block__close')
+        // Remove iframe
+        iframe.remove()
+        // Hide the Close button
+        button.classList.remove('video-block__close--show')
+    }
+
+	init() {
+		// Click Event of Link
+		this.link.addEventListener('click', (e) => {
+			e.preventDefault();
+
+            // Close any existing Video Block iframes
+            if (document.querySelectorAll('.video-block iframe').length) {
+                document.querySelectorAll('.video-block iframe').forEach(iframe => this.removeIframe(iframe))
+            }
+
+			// If there's no iframe
+			if (!this.viewport.querySelector('iframe')) {
+				// Append iframe
+				this.viewport.appendChild(this.createIframe);
+				// Set iframe src
+				this.createIframe.src = this.iframe_src;
+
+				// Define iframe
+				this.getAppendedIframe();
+
+				// Show iframe in once loaded
+				this.iframe.addEventListener(
+					'load',
+					() => {
+						this.iframe.classList.add('iframe--show');
+					},
+					{ once: true }
+				);
+
+				// Show Close Button
+				this.closeButton.classList.add('video-block__close--show');
+			}
+		});
+
+		// Click Event of Close Button
+		this.closeButton.addEventListener('click', () => {
+			// Define iframe
+			this.getAppendedIframe();
+
+			this.iframe.classList.remove('iframe--show');
+			this.closeButton.classList.remove('video-block__close--show');
+
+			this.iframe.addEventListener(
+				'transitionend',
+				() => {
+					this.iframe.src = '';
+					this.iframe.parentNode.removeChild(this.iframe);
+				},
+				{ once: true }
+			);
+		});
+	}
+}
+document.querySelectorAll('[data-video]').forEach((instance) => new VideoBlock(instance));
+</script>

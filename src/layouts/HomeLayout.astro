@@ -1,0 +1,22 @@
+---
+import DocumentHead from '../components/DocumentHead.astro';
+import Announcement from '../components/Announcement.astro'
+import GlobalHeader from '../components/GlobalHeader.astro'
+
+const { page_title, og_title, og_description, og_image, announcement_color_start='#ff5d01', announcement_color_end='#31274a' } = Astro.props
+---
+
+<html lang="en">
+    <head>
+		<DocumentHead page_title={page_title} og_title={og_title} og_description={og_description} og_image={og_image} />
+	</head>
+    <body data-announcement style={'--announcement-color-end:' + announcement_color_end}>
+        <Announcement announcement_color_start={announcement_color_start} announcement_color_end={announcement_color_end}/>
+
+        <GlobalHeader/>
+        
+        <main id="content">
+            <slot />
+        </main>
+    </body>
+</html>

@@ -1,0 +1,48 @@
+/* Media Queries
+Small Screen: @media screen and (max-width: 767px) {}
+Small & Medium Screen: @media screen and (max-width: 1024px) {}
+Medium Screen: @media screen and (min-width: 768px) and (max-width: 1024px) {}
+Medium & Large Screen: @media screen and (min-width: 768px) {}
+Large Screen: @media screen and (min-width: 1025px) {}
+Hover Stotes (exlcudes Touch devices): @media(hover:hover) and (pointer:fine) {}
+*/
+
+:root {
+	/* Colors */
+	--color-darkest: #000;
+	--color-lightest: #fff;
+    --color-accent: #00a303;
+    --color-warning: #b3001b;
+
+	--color-body-background: #fcfcfc;
+
+    --color-header-background: #f3f3f3;
+    --color-header-border: rgba(31, 31, 31, 0.15);
+
+    --color-primary-nav-link: #313131;
+
+	--color-primary-link: #02339E; 
+
+    --color-primary-headers: #131313;
+	--color-primary-text: #313131;
+
+	/* Border Radius */
+    --global-border-radius: 15px;
+
+	/* Easing */
+	--global-easing: ease-in-out;
+
+	/* For font sizing */
+	--min-viewport: 20; // = 320px
+	--max-viewport: 90; // 1440px
+
+    /* Heights */
+	--global-header-height: 60px;
+
+	/* Spacing */
+	--global-side-space: 20px;
+	--global-bottom-space: 50px;
+
+    /* Widths */
+	--max-width-content: 1440px;
+}

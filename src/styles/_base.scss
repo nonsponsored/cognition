@@ -1,0 +1,37 @@
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+	position: relative;
+	-webkit-text-size-adjust: 100%;
+}
+
+body {
+	background-color: var(--color-body-background);
+	color: var(--color-primary-text);
+    display: flex;
+    flex-direction: column;
+	font-family: "ManropeGX", sans-serif;
+	line-height: 1.4;
+	margin: 0;
+    min-height: var(--app-height, 100%);
+	position: relative;
+}
+
+main {
+    flex: 1 0 auto;
+	padding: 40px var(--global-side-space);
+}
+
+picture,
+img {
+    display: block;
+}
+
+img {
+    max-width: 100%;
+}

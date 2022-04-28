@@ -1,0 +1,51 @@
+/* Focus States */
+:focus:not(:focus-visible) {
+	outline: 0;
+}
+:focus-visible {
+	outline: 5px auto var(--color-accent);
+}
+
+/* Default Link */
+a {
+	color: var(--color-primary-link);
+	font-variation-settings: "wght" 500;
+	text-decoration-thickness: 0.05em;
+	text-underline-offset: 0.1em;
+}
+
+/* Skip Navigation */
+#skip-navigation {
+	align-items: center;
+	background-color: var(--color-accent);
+	color: var(--color-lightest);
+	display: flex;
+    font-size: 1rem;
+    font-variation-settings: "wght" 700;
+	justify-content: center;
+	left: 0;
+	overflow: hidden;
+	position: fixed;
+	height: var(--global-header-height);
+    padding: 0 var(--global-side-space);
+	right: 0;
+	text-align: center;
+	top: calc(-2 * var(--global-header-height));
+    transform: translateY(0);
+	transition: transform 350ms var(--global-easing);
+	width: 100%;
+	z-index: 6;
+	
+	&:active,
+	&:focus {
+		transform: translateY(calc(2 * var(--global-header-height)));
+	}
+}
+
+@media (hover: hover) and (pointer: fine) {
+	a:hover {
+        color: var(--color-primary-link);
+		text-decoration-thickness: 0.1em;
+		text-underline-offset: 0.05em;
+	}
+}
