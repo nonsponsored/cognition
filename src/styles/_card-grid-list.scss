@@ -28,6 +28,22 @@
 
 /* Card List */
 .card-list {
-    margin: 0 auto var(--global-bottom-space);
     max-width: var(--max-width-content);
+
+    li {
+        margin-inline-start: 0;
+        padding-inline-start: 0;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .card-list {
+        margin: 0 0 var(--global-bottom-space);
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .card-list {
+        margin: 0 auto var(--global-bottom-space);
+    }
 }

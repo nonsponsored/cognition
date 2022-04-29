@@ -304,7 +304,7 @@
 		/* Nav List */
 		&__nav-list {
 			display: inline-flex;
-			margin-right: -25px;
+			margin-right: calc(-1 *  var(--global-side-space));
 
             /* State: Current Page */
             > li > a[aria-current]::before {
