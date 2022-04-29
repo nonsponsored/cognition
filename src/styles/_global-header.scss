@@ -67,7 +67,7 @@
         /* Hover State */
         @media(hover:hover) and (pointer:fine) {
             &:hover {
-                color: var(--color-accent);
+                color: var(--color-primary-nav-hover);
             }
         }
 	}
