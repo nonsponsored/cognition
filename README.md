@@ -10,7 +10,7 @@ Starter theme for Astro (https://astro.build/) that's more than a blog, and uses
 - Fluid typography system that uses the Manrope (https://manropefont.com) variable font.
 - Globally defined meta information, which can be overridden at the page level.
 - Animations that respect reduced-motion preferences.
-- Template files for `favicon.ico`, `favicon.svg`, `apple-touch-icon.png`, and `share-image.jpg` (for social sharing).
+- Template files for `favicon.ico`, `favicon.svg`, `apple-touch-icon.png`, and `share-image.png` (for social sharing).
 - See the Guides & Demos for details about components: https://cognition-theme.netlify.app/guides-and-demos/
 
 ### Demo Site
