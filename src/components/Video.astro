@@ -1,21 +1,21 @@
 ---
-const { action_color, iframe_src, poster, poster_alt, video_description } = Astro.props
+const { actionColor, iframeSrc, poster, posterAlt, videoTitle } = Astro.props
 ---
 
-<div class="video-block" data-video style={'--action-color: ' + action_color}>
+<div class="video-block" data-video style={'--action-color: ' + actionColor}>
     <div class="video-block__viewport">
-        { iframe_src && poster && poster_alt && video_description ? 
-        <a href={iframe_src}>
+        { iframeSrc && poster && posterAlt && videoTitle ? 
+        <a href={iframeSrc}>
             <figure>
                 <picture>
-                    <img src={poster} alt={poster_alt}/>
+                    <img src={poster} alt={posterAlt}/>
                 </picture>
-                <figcaption class="text-6"><span>{video_description}</span></figcaption>
+                <figcaption class="text-6"><span>{videoTitle}</span></figcaption>
             </figure>
         </a>
         <button type="button" class="video-block__close">Close</button>
         :
-        <p class="warning">Data is missing.</p>
+        <p class="warning">Video configuration data is missing.</p>
         }
     </div>
 </div>
@@ -23,11 +23,26 @@ const { action_color, iframe_src, poster, poster_alt, video_description } = Astr
 
 <style is:global lang="scss">
 .video-block {
-    --global-bottom-space: 60px;
+    --global-vertical-space: 64px;
 
-    margin: 0 auto var(--global-bottom-space);
+    margin: 0 auto var(--global-vertical-space);
     position: relative;
     width: 100%;
+
+    .article-block & {
+        left: 50%;
+        margin: 0 -50vw calc(var(--global-vertical-space) * 1.25);
+        padding: 0 var(--global-side-space);
+        position: relative;
+        right: 50%;
+        width: 100vw;
+        
+        &__viewport {
+            margin: 0 auto;
+            max-width: 110ch;
+            width: fit-content;
+        }
+    }
     
     &__viewport {
         display: grid;
@@ -61,6 +76,7 @@ const { action_color, iframe_src, poster, poster_alt, video_description } = Astr
     }
 
     figure {
+        border: 1px solid var(--color-border);
         border-radius: var(--global-border-radius);
         display: grid;
         margin: 0 auto;
@@ -82,7 +98,7 @@ const { action_color, iframe_src, poster, poster_alt, video_description } = Astr
 
     figcaption {
         align-items: center;
-        background-color: rgba(0, 0, 0, 0.25);
+        background-color: rgba(0, 0, 0, 0.75);
         color: var(--color-lightest);
         display: flex;
         margin: 0;
@@ -105,7 +121,7 @@ const { action_color, iframe_src, poster, poster_alt, video_description } = Astr
             --icon-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='16'%3E%3Cpath fill-rule='evenodd' fill='(%23000)' d='M0 1l10 7-10 7z'/%3E%3C/svg%3E");
             --icon-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='16'%3E%3Cpath fill-rule='evenodd' fill='%23fff' d='M0 1l10 7-10 7z'/%3E%3C/svg%3E");
 
-            background: var(--color-lightest) var(--icon-dark) center center no-repeat;
+            background: var(--color-lightest) var(--icon-dark) 55% center no-repeat;
             border-radius: 50%;
             content: '';
             display: inline-flex;
@@ -252,7 +268,7 @@ class VideoBlock {
 		// Vimeo URL Format: https://player.vimeo.com/video/VIDEO_ID
 		// YouTube URL Format: https://www.youtube-nocookie.com/embed/VIDEO_ID
 
-		// If YouTube
+		// If Vimeo
 		if (urlObject.hostname.match('vimeo'))
 			this.iframe_src =
 				this.linkURL +
@@ -276,6 +292,23 @@ class VideoBlock {
         iframe.remove()
         // Hide the Close button
         button.classList.remove('video-block__close--show')
+    }
+
+    closeVideo() {
+        // Define iframe
+        this.getAppendedIframe();
+
+        this.iframe.classList.remove('iframe--show');
+        this.closeButton.classList.remove('video-block__close--show');
+
+        this.iframe.addEventListener(
+            'transitionend',
+            () => {
+                this.iframe.src = '';
+                this.iframe.parentNode.removeChild(this.iframe);
+            },
+            { once: true }
+        );
     }
 
 	init() {
@@ -314,21 +347,17 @@ class VideoBlock {
 
 		// Click Event of Close Button
 		this.closeButton.addEventListener('click', () => {
-			// Define iframe
-			this.getAppendedIframe();
-
-			this.iframe.classList.remove('iframe--show');
-			this.closeButton.classList.remove('video-block__close--show');
-
-			this.iframe.addEventListener(
-				'transitionend',
-				() => {
-					this.iframe.src = '';
-					this.iframe.parentNode.removeChild(this.iframe);
-				},
-				{ once: true }
-			);
+			this.closeVideo()
 		});
+
+        // Close via Escape Key
+        document.addEventListener('keydown', (e) => {
+            if ( this.closeButton.classList.contains('video-block__close--show') ) {
+                if (e.key == 'Escape') {
+                    this.closeVideo();
+                }
+            }
+        })
 	}
 }
 document.querySelectorAll('[data-video]').forEach((instance) => new VideoBlock(instance));

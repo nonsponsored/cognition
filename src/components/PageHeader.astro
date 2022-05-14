@@ -1,19 +1,39 @@
 ---
-const { page_title } = Astro.props
+const { headerType, pageTitle, pubDate, author, authorSlug, authorAvatar } = Astro.props
 ---
 
-<div class="page-header">
-    <h1 class="text-3" data-animation-fontgrow>{page_title}</h1>
-</div>
+<header class="page-header">
+    { headerType === "author" &&
+        <picture>
+            <img src={authorAvatar} alt=""/>
+        </picture>
+    }
+    
+    <h1 class="text-2" data-animation-fontgrow>{pageTitle}</h1>
+
+    { headerType === "article" &&
+        <p>Written by: <a href={/authors/+authorSlug}>{author}</a> on {pubDate}</p>
+    }
+</header>
 
 <style is:global lang="scss">
 .page-header {
-    margin: 0 auto var(--global-bottom-space);
+    margin: 0 auto var(--global-vertical-space);
 	width: min(var(--max-width-content), 100%);
 
     h1 {
         letter-spacing: 0.01em;
         text-transform: uppercase;
+    }
+
+    picture {
+        margin-block-end: 1.5em;
+    }
+    img {
+        border-radius: 50%;
+    }
+    p {
+        --max-font-size: 1;
     }
 }
 </style>

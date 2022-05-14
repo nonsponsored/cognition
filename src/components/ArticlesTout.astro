@@ -1,0 +1,25 @@
+---
+import Card from '@components/Card.astro'
+import BackLink from '@components/BackLink.astro'
+
+const articles = await Astro.glob('../../src/pages/articles/*.md')
+articles.sort((a, b) => new Date(b.frontmatter.pubDate) - new Date(a.frontmatter.pubDate))
+
+const { numberOfArticles } = Astro.props
+---
+
+<div class="grid grid--card">
+    {articles.slice(0, numberOfArticles ? numberOfArticles : '3').map(post =>
+        <Card
+            link={post.url}
+            image={post.frontmatter.imageHero}
+            imageAlt={post.frontmatter.imageHeroAlt}
+            title={post.frontmatter.title}
+            author={post.frontmatter.author}
+            authorSlug={post.frontmatter.authorSlug}
+            pubDate={post.frontmatter.pubDate}
+        />
+    )}
+</div>
+
+<BackLink link="/articles/" linkText="See More Articles" />

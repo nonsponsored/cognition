@@ -1,0 +1,35 @@
+---
+const { articles, slug } = Astro.props
+---
+
+<div class="author-articles">
+    <h2 class="text-5">Articles:</h2>
+
+    <ul>
+    {articles.map(article =>
+        (article.frontmatter.authorSlug === slug)
+            &&
+        <li>
+            <a href={article.url}>{article.frontmatter.title}</a>
+            <span>{article.frontmatter.pubDate}</span>
+        </li>
+    )}
+    </ul>
+</div>
+
+<style is:global lang="scss">
+.author-articles {
+    border-top: 1px solid var(--color-border);
+    margin: 0 auto var(--global-vertical-space);
+    padding-block-start: var(--global-vertical-space);
+	width: min(var(--max-width-content), 100%);
+
+    li {
+        margin-block-end: 1em;
+    }
+
+    span {
+        display: block;
+    }
+}
+</style>

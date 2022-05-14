@@ -1,0 +1,15 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro'
+import PageHeader from '@components/PageHeader.astro'
+import AuthorCard from '@components/AuthorCard.astro'
+
+const { pageTitle='Authors' } = Astro.props
+---
+
+<BaseLayout pageTitle={pageTitle}>
+
+    <PageHeader pageTitle={pageTitle} />
+
+    <AuthorCard />
+
+</BaseLayout>

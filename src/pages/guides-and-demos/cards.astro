@@ -1,0 +1,53 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro'
+import PageHeader from '@components/PageHeader.astro'
+import Card from '@components/Card.astro'
+import AuthorCard from '@components/AuthorCard.astro'
+
+const { pageTitle='Cards' } = Astro.props
+---
+
+<BaseLayout pageTitle={pageTitle}>
+
+    <PageHeader pageTitle={pageTitle}/>
+
+    <div class="text-block">
+        <p><small>Demo Only: Card links aren't active.</small></p>
+    </div>
+
+     <div class="grid grid--card">
+        <Card
+            link="#"
+            image="/img/generic/poster-brand.png"
+            imageAlt="Brand Poster"
+            title="Has All Data and Linked Author"
+            author="Author Name"
+            authorSlug="#"
+            pubDate="May 13, 2022"
+        />
+
+        <Card
+            link="#"
+            image="/img/generic/poster-dark.png"
+            imageAlt="Brand Poster"
+            title="Has All Data but no Author Link"
+            author="Author Name"
+            pubDate="May 13, 2022"
+        />
+
+        <Card
+            link="#"
+            title="No Image and No Author"
+        />
+    </div>
+
+    <div class="text-block">
+        <h2 class="text-3">Author Cards: Generated</h2>
+    </div>
+    <AuthorCard  />
+
+    <div class="text-block">
+        <h2 class="text-3">Author Card: Single</h2>
+        <AuthorCard author="Author Name" authorSlug="#" authorAvatar="/img/generic/poster-dark.png" />
+    </div>
+</BaseLayout>

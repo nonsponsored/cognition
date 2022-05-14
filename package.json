@@ -1,6 +1,6 @@
 {
 	"name": "Cognition",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"private": true,
 	"scripts": {
 		"scss": "sass src/styles:public/css --no-source-map --style compressed",
@@ -9,7 +9,8 @@
 		"preview": "astro preview"
 	},
 	"devDependencies": {
-		"astro": "^1.0.0-beta.19",
-		"sass": "^1.50.0"
+		"@astrojs/rss": "^0.2.0",
+		"astro": "1.0.0-beta.27",
+		"sass": "^1.51.0"
 	}
 }

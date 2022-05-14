@@ -1,0 +1,70 @@
+---
+const { imageWidth, imageSrc, imageAlt, caption } = Astro.props
+---
+
+<figure class={'image-block ' + 'image-block--'+imageWidth}>
+    { imageSrc && imageAlt ?
+    <picture>
+        <img src={imageSrc} alt={imageAlt} />
+    </picture>
+    {caption && <figcaption>{caption}</figcaption>}
+    :
+    <p class="warning">Missing image source or alt text.</p>
+    }
+</figure>
+
+
+<style is:global lang="scss">
+.image-block {
+    margin: 0 auto 2.5em;
+
+    picture {
+        margin: 0 auto;
+        width: fit-content;
+    }
+
+    &--natural,
+    &--medium {
+        left: 50%;
+        margin-inline-end: calc(-50vw + var(--global-side-space));
+        margin-inline-start: calc(-50vw + var(--global-side-space));
+        position: relative;
+        right: 50%;
+        width: calc(100vw - (var(--global-side-space) * 2));
+    }
+
+    &--natural {
+
+        figcaption {
+            max-width: var(--max-width-media); /* Note this value is the actual width of the image. */
+        }
+    }
+
+    &--medium {
+        --width-overflow: 30ch;
+
+        img {
+            width: min(100%, var(--max-width-article) + var(--width-overflow));
+        }
+
+        figcaption {
+            max-width: calc(var(--max-width-article) + var(--width-overflow,0));
+        }
+    }
+
+    &--narrow {
+        max-width: var(--max-width-article);
+    }
+
+    img {
+        border-radius: var(--global-border-radius);
+        border: 1px solid var(--color-border);
+        margin: 0 auto;
+    }
+
+    figcaption {
+        margin: 0 auto;
+        padding: 0.25em 1em;
+    }
+}
+</style>

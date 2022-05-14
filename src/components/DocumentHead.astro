@@ -1,18 +1,18 @@
 ---
-const { site_name='Cognition', page_title, og_title=site_name + ' : ' + page_title, og_description='Cognition Theme', og_image='/img/social/share-image.jpg' } = Astro.props
+const { siteName='Cognition', pageTitle, ogTitle=siteName + ' : ' + pageTitle, ogDescription='Cognition Theme', ogImage='/img/social/share-image.jpg' } = Astro.props
 ---
 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<meta name="description" content={og_description}>
-<meta data-hid="og:title" property="og:title" content={og_title}>
-<meta data-hid="og:image" property="og:image" content={og_image}>
-<meta data-hid="og:description" property="og:description" content={og_description}>
-<meta data-hid="twitter:title" name="twitter:title" content={og_title}>
-<meta data-hid="twitter:image" name="twitter:image" content={og_image}>
-<meta data-hid="twitter:description" name="twitter:description" content={og_description}>
+<meta name="description" content={ogDescription}>
+<meta data-hid="og:title" property="og:title" content={ogTitle}>
+<meta data-hid="og:image" property="og:image" content={ogImage}>
+<meta data-hid="og:description" property="og:description" content={ogDescription}>
+<meta data-hid="twitter:title" name="twitter:title" content={ogTitle}>
+<meta data-hid="twitter:image" name="twitter:image" content={ogImage}>
+<meta data-hid="twitter:description" name="twitter:description" content={ogDescription}>
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/img/global/apple-touch-icon.png">
 <link rel="stylesheet" href={import.meta.env.MODE === 'development' ? '/src/styles/global.scss' : '/css/global.css'}/>
-<title>{site_name}{page_title && ' : ' + page_title}</title>
+<title>{siteName}{pageTitle && ' : ' + pageTitle}</title>

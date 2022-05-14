@@ -1,25 +1,29 @@
 ---
-const { announcement_color_start, announcement_color_end } = Astro.props
+const { launchEffect, launchColorStart, launchColorEnd } = Astro.props
 ---
-<div class="announcement" style={'--announcement-color-start: ' + announcement_color_start + '; --announcement-color-end: ' + announcement_color_end}>
-    <svg xmlns="http://www.w3.org/2000/svg" width="105" height="105" fill="none" fill-rule="evenodd" class="rocket">
-        <title>Rocket Icon</title>
+<div class={'launch ' + launchEffect } style={'--launch-color-start: ' + launchColorStart + '; --launch-color-end: ' + launchColorEnd}>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="105" height="123" fill="none" fill-rule="evenodd" class="rocket">
         <g fill-rule="nonzero">
             <path class="rocket__fire-outline" fill="var(--rocket-secondary-color)" d="M52.5 82.239a.98.98 0 0 1-.512-.144c-2.135-1.31-3.514-4.746-3.514-8.754 0-2.01.354-3.92 1.023-5.524a.98.98 0 0 1 .904-.602h4.198a.98.98 0 0 1 .904.602c.669 1.602 1.023 3.511 1.023 5.524 0 4.008-1.379 7.444-3.513 8.754-.157.097-.335.144-.512.144z"/>
             <path class="rocket__fire" fill="#fff" d="M51.077 69.175c-.418 1.233-.645 2.686-.645 4.166 0 3.262.995 5.601 2.067 6.671 1.071-1.07 2.066-3.409 2.066-6.671 0-1.481-.226-2.934-.645-4.166h-2.844z"/>
-            <path class="rocket__trail" d="M52.5 105a.98.98 0 0 1-.98-.98V87.621a.98.98 0 0 1 .98-.98.98.98 0 0 1 .98.98v16.399a.98.98 0 0 1-.98.98zm-9.245-8.841a.98.98 0 0 1-.98-.98V76.237a.98.98 0 0 1 .98-.98.98.98 0 0 1 .98.98V95.18a.98.98 0 0 1-.98.979zm18.49 1.664a.98.98 0 0 1-.98-.98V77.899a.98.98 0 0 1 .98-.98.98.98 0 0 1 .98.98v18.943a.98.98 0 0 1-.98.98z" fill="var(--rocket-secondary-color)"/>
+            <path class="rocket__trail" fill="var(--rocket-secondary-color)" d="M52.5 105a.98.98 0 0 1-.98-.98V87.621a.98.98 0 0 1 .98-.98.98.98 0 0 1 .98.98v16.399a.98.98 0 0 1-.98.98zm-9.245-8.841a.98.98 0 0 1-.98-.98V76.237a.98.98 0 0 1 .98-.98.98.98 0 0 1 .98.98V95.18a.98.98 0 0 1-.98.979zm18.49 1.664a.98.98 0 0 1-.98-.98V77.899a.98.98 0 0 1 .98-.98.98.98 0 0 1 .98.98v18.943a.98.98 0 0 1-.98.98z"/>
             <path class="rocket__outline" fill="var(--rocket-primary-color)" d="M54.792 1.077A2.97 2.97 0 0 0 52.5 0c-.89 0-1.728.397-2.292 1.077-7.302 8.811-11.767 23.576-13.344 44.03l-11.267 10.71c-1.696 1.598-2.647 3.848-2.647 6.168v10.04c0 1.114.576 2.114 1.54 2.672a3.06 3.06 0 0 0 3.084.007l9.925-5.69 9.776-.001a.98.98 0 0 0 .98-.98.98.98 0 0 0-.98-.98h-9.071c-.427-31.617 4.119-53.389 13.513-64.725a1.03 1.03 0 0 1 .783-.367c.303 0 .589.134.782.368 9.395 11.335 13.939 33.109 13.513 64.725h-9.073a.98.98 0 0 0-.98.98.98.98 0 0 0 .98.98l9.777-.001 9.924 5.69c.967.556 2.121.552 3.085-.006a3.14 3.14 0 0 0 .647-.496c.567-.569.892-1.34.892-2.176V61.984a8.54 8.54 0 0 0-2.646-6.169l-11.267-10.71c-1.577-20.453-6.042-35.218-13.344-44.03zM36.253 67.469l-9.652 5.534c-.333.191-.639.173-.859.111l-.083-.027c-.026-.009-.05-.019-.073-.029l-.062-.029h0l-.05-.027h0l-.051-.032c-.186-.122-.512-.412-.511-.945v-10.04a6.6 6.6 0 0 1 2.037-4.748l9.713-9.233c-.375 6.022-.511 12.514-.409 19.466zm41.799-10.232c1.295 1.23 2.037 2.96 2.037 4.748v10.038a1.09 1.09 0 0 1-.419.878l-.063.047c-.01.007-.02.013-.029.02l-.051.032h0l-.05.027h0l-.062.03h0l-.073.029a1.09 1.09 0 0 1-.943-.084l-9.651-5.533c.102-6.951-.033-13.443-.408-19.465l9.712 9.234z"/>
         </g>
-        <circle class="rocket__window" cx="52.2" cy="31.177" r="5.382" stroke="var(--rocket-primary-color)" stroke-width="2"/>
-    </svg>	  
-    <div class="announcement__effect" aria-hidden="true"></div>
+        <circle cx="52.2" cy="31.177" r="5.382" stroke="var(--rocket-primary-color)" stroke-width="2"/>
+        <path class="rocket__tethers" d="M27 73h2v50h-2zm49 0h2v50h-2z" fill="var(--rocket-primary-color)"/>
+    </svg>
+	  
+    <div class="launch__effect" aria-hidden="true">
+        <div class="launch__effect__blocks"><span></span></div>
+    </div>
 </div>
 
 
 <style is:global lang="scss">
 /* Update body, Global Header and main styles based on Announcemnt */
-[data-announcement] {
-    background-color: var(--announcement-color-end);
+[data-launch] {
+    background-color: var(--launch-color-end);
     .global-header {
         opacity: 0;
         position: fixed;
@@ -46,59 +50,183 @@ const { announcement_color_start, announcement_color_end } = Astro.props
 }
 
 
-/* Announcement */
-.announcement {
+/* Launch */
+.launch {
     --icon-height: 105px;
 
 	background-color: var(--color-lightest);
-	padding-top: calc(var(--vh, 100vh) - var(--icon-height));
+    padding-top: calc(var(--vh, 100vh) - var(--icon-height));
 	position: relative;
-}
-@media (orientation: landscape) {
-    .announcement {
-        padding-top: calc(100vh - var(--icon-height));
+
+    &__effect {
+        background: linear-gradient(to bottom, var(--launch-color-start) 25%, var(--launch-color-end) 100%);
+        height: calc(100vh + var(--global-header-height,0));
+        overflow: hidden;
+        position: relative;
     }
-}
-.announcement__effect {
-    background: linear-gradient(to bottom, var(--announcement-color-start) 25%, var(--announcement-color-end) 100%);
-	height: calc(100vh + var(--global-header-height,0));
-	overflow: hidden;
-	position: relative;
-}
-.announcement__effect::before,
-.announcement__effect::after {
-	background-color: var(--color-lightest);
-	content: '';
-	height: 200vh;
-	position: absolute;
-	top: -100vh;
-	transform: scaleY(var(--scale-y));
-	width: 200vh;
-	will-change: transform;
-}
-.announcement__effect::before {
-    border-radius: 0 0 50% 0;
-    right: 50%;
-	transform-origin: right center;
-}
-.announcement__effect::after {
-    border-radius: 0 0 0 50%;
-    left: 50%;
-    transform-origin: left center;
 }
 
-@media screen and (orientation: landscape) and (max-height: 900px) {
-    .announcement__effect::before,
-    .announcement__effect::after {
-        width: 300vh;
+/* Version: Stretch */
+.launch--stretch {
+
+    .rocket__tethers {
+        display: none;
+    }
+
+    .launch__effect::before,
+    .launch__effect::after {
+        background-color: var(--color-lightest);
+        content: '';
+        height: 200vh;
+        position: absolute;
+        top: -100vh;
+        transform: scaleY(var(--scale-y));
+        width: 200vh;
+        will-change: transform;
+    }
+    .launch__effect::before {
+        border-radius: 0 0 50% 0;
+        right: 50%;
+        transform-origin: right center;
+    }
+    .launch__effect::after {
+        border-radius: 0 0 0 50%;
+        left: 50%;
+        transform-origin: left center;
+    }
+
+    @media screen and (orientation: landscape) and (max-height: 900px) {
+        .launch__effect::before,
+        .launch__effect::after {
+            width: 300vh;
+        }
+    }
+
+    .launch__effect__blocks {
+        display: none;
     }
 }
+
+/* Version: Pull */
+.launch--pull {
+
+    .launch__effect {
+        background: linear-gradient(to bottom, var(--launch-color-start) 0%, var(--launch-color-start) 120px, var(--launch-color-end) 100%);
+        height: 65vh;
+    
+
+        &__blocks {
+            background-color: var(--color-lightest);
+        
+            &::before {
+                background-color: var(--launch-color-start);
+                border-top-left-radius: 4px;
+                border-top-right-radius: 4px;
+                clip-path: polygon(var(--angle) 0, calc(100% - var(--angle)) 0, 100% 100%, 0 100%);
+                content: '';
+                display: block;
+                height: 50px;
+                margin: 0 auto;
+                transform: scaleX(calc(1 + (var(--scale-y) / 2)));
+                transform-origin: center top;
+            }
+            & span::before,
+            & span::after {
+                background-color: var(--launch-color-start);
+                border-top-left-radius: 4px;
+                border-top-right-radius: 4px;
+                clip-path: polygon(var(--angle) 0, calc(100% - var(--angle)) 0, 100% 100%, 0 100%);
+                content: '';
+                display: block;
+                margin: 0 auto;
+                transform: scaleX(calc(1 + (var(--scale-y) / 2)));
+                transform-origin: center top;
+                will-change: transform;
+            }
+            & span::before {
+                height: 40px;
+                width: var(--before-width);
+            }
+            & span::after {
+                height: 30px;
+                width: var(--after-width);
+            }
+        }
+    }
+}
+
+@media (orientation: landscape) {
+    .launch {
+        padding-top: calc(100vh - var(--icon-height));
+    
+        &__effect {
+            background: linear-gradient(to bottom, var(--launch-color-start) 33%, var(--launch-color-end) 100%);
+            min-height: 375px;
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .launch--pull {
+        .launch__effect__blocks {
+            --angle: 1em;
+ 
+            &::before {
+                width: 100px
+            }
+            & span::before {
+                --before-width: 60vw;
+            }
+            & span::after {
+                --after-width: 90vw;
+            }
+        }
+    }
+}
+@media screen and (min-width: 768px) {
+    .launch--pull {
+        .launch__effect__blocks {
+            --angle: 2.5em;
+    
+            &::before {
+                width: 150px
+            }
+    }
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .launch--pull {
+        .launch__effect__blocks {
+
+            span::before {
+                --before-width: 50vw;
+            }
+            span::after {
+                --after-width: 80vw;
+            }
+        } 
+    }
+}
+@media screen and (min-width: 1025px) {
+    .launch--pull {
+        .launch__effect__blocks {
+
+            span::before {
+                --before-width: 38vw;
+            }
+            span::after {
+                --after-width: 66vw;
+            }
+        }
+    }
+}
+
 
 /* Rocket Icon */
 .rocket {
     --rocket-easing: ease-in-out;
-	--rocket-primary-color: var(--announcement-color-end);
-	--rocket-secondary-color: var(--announcement-color-start);
+	--rocket-primary-color: var(--launch-color-end);
+	--rocket-secondary-color: var(--launch-color-start);
 	
 	display: block;
 	margin: 0 auto;
@@ -139,15 +267,15 @@ const { announcement_color_start, announcement_color_end } = Astro.props
 </style>
 
 <script>
-class Announcement {
+class Launch {
 	constructor() {
         // Wait for DOM
         window.addEventListener('load', () => {
             // Define elements
             this.header = document.querySelector('.global-header')
-            this.container = document.querySelector('.announcement')
+            this.container = document.querySelector('.launch')
             this.containereHeight = this.container.clientHeight
-            this.effect = this.container.querySelector('.announcement__effect')
+            this.effect = this.container.querySelector('.launch__effect')
             this.rocket = this.container.querySelector('.rocket')
             this.timeout
 
@@ -162,6 +290,8 @@ class Announcement {
             // Accommodate iOS viewport height
             if(window.matchMedia('(pointer: coarse)').matches) {
                 this.viewportHeight()
+
+                window.addEventListener('resize', this.viewportHeight);
             }
 
             // Reset Global Header on Resize
@@ -229,5 +359,5 @@ class Announcement {
         })
 	}
 }
-new Announcement()
+new Launch()
 </script>

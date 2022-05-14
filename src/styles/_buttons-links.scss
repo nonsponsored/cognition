@@ -8,10 +8,22 @@
 
 /* Default Link */
 a {
-	color: var(--color-primary-link);
+    color: var(--color-primary-link);
 	font-variation-settings: "wght" 500;
-	text-decoration-thickness: 0.05em;
-	text-underline-offset: 0.1em;
+}
+
+/* Link Effect : Animating background */
+.link-effect,
+blockquote a,
+p a,
+ol:not([class]) a,
+ul:not([class]) a {
+    background: linear-gradient(var(--color-primary-link) 0 0) no-repeat 100% 100% / 100% calc(100%*var(--run,0) + .08em);
+    padding: 0 1px;
+    text-decoration: none;
+    @media (prefers-reduced-motion: no-preference) {
+        transition: 300ms calc(var(--run,0) * 150ms) var(--global-easing);
+    }
 }
 
 /* Skip Navigation */
@@ -43,9 +55,12 @@ a {
 }
 
 @media (hover: hover) and (pointer: fine) {
-	a:hover {
-        color: var(--color-primary-link);
-		text-decoration-thickness: 0.1em;
-		text-underline-offset: 0.05em;
+    a:hover .link-effect,
+    blockquote a:hover,
+	p a:hover,
+    ol:not([class]) a:hover,
+    ul:not([class]) a:hover {
+        --run: 1;
+        color: white;
 	}
 }

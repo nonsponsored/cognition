@@ -1,0 +1,36 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro'
+import PageHeader from '@components/PageHeader.astro'
+import Card from '@components/Card.astro'
+import Pagination from '@components/Pagination.astro'
+
+export async function getStaticPaths({ paginate }) {
+    const allPosts = await Astro.glob('../articles/*.md')
+    const sortedPosts = allPosts.sort((a, b) => new Date(b.frontmatter.pubDate) - new Date(a.frontmatter.pubDate))
+    return paginate(sortedPosts, { pageSize: 15 });
+}
+
+const { page, pageTitle='Articles' } = Astro.props
+---
+
+<BaseLayout pageTitle={pageTitle}>
+
+    <PageHeader pageTitle={pageTitle} />
+
+    <div class="grid grid--card">
+        {page.data.map(post =>
+            <Card
+                link={post.url}
+                image={post.frontmatter.imageHero}
+                imageAlt={post.frontmatter.imageHeroAlt}
+                title={post.frontmatter.title}
+                author={post.frontmatter.author}
+                authorSlug={post.frontmatter.authorSlug}
+                pubDate={post.frontmatter.pubDate}
+            />
+        )}
+    </div>
+
+    <Pagination page={page} />
+    
+</BaseLayout>

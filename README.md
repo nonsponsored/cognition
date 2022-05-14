@@ -1,18 +1,17 @@
 ## Cognition
 
-Starter theme for Astro (https://astro.build/), using no other frameworks, and currently including:
+### Status
+Sizable and extensive rework from the initial release, much more of an out-of-the-box starter now.
+
+### What It Is
+Starter theme for Astro (https://astro.build/) that's more than a blog, and uses no other frameworks.
 
 - Accessible, extensible, and responsive navigation system, with optional dropdown system.
-- Fluid typography system that uses the 1.333 Perfect Fourth scale ratio and the Manrope (https://manropefont.com) variable font.
+- Fluid typography system that uses the Manrope (https://manropefont.com) variable font.
 - Globally defined meta information, which can be overridden at the page level.
-- Template files for `favicon.ico`, `favicon.svg`, `apple-touch-icon.png`, and `share-image.jpg` (for social sharing).
-- Card component flexible enough for blog or product content.
-- Basic Page Header component.
-- Generic Rich Text Editor container, that can also be used as a component.
-- Video component for displaying Twitch, YouTube, and Vimeo videos.
-- Superfluous, yet fun, Announcement component with rocket launch.
 - Animations that respect reduced-motion preferences.
-
+- Template files for `favicon.ico`, `favicon.svg`, `apple-touch-icon.png`, and `share-image.jpg` (for social sharing).
+- See the Guides & Demos for details about components: https://cognition-theme.netlify.app/guides-and-demos/
 
 ### Demo Site
 https://cognition-theme.netlify.app/
@@ -69,5 +68,9 @@ In `/src/styles/_variables.scss`, define the `--min-viewport` and `--max-viewpor
 | `yarn build`   | Build your production site to `./dist/`     |
 
 ### Known Issues
-
+- **Do not update to Astro Beta 28** yet, as it seems to have changed how CSS files are handled.
 - Announcement scroll effect jitters on Chrome some, if you scroll too fast or change direction fast. This despite using hardware acceleration and throttling.
+
+### What Comes Next...Ideally
+- RSS
+- Dynamically generated navigation

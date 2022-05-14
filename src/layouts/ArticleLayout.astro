@@ -1,0 +1,49 @@
+---
+import DocumentHead from '@components/DocumentHead.astro';
+import GlobalHeader from '@components/GlobalHeader.astro'
+import GlobalFooter from '@components/GlobalFooter.astro'
+import PageHeader from '@components/PageHeader.astro'
+import BackLink from '@components/BackLink.astro'
+
+export interface Props {
+	content: {
+		title: string;
+		description: string;
+        pubDate: string | Date;
+		author: string;
+        authorSlug: string;
+        authorAvatar: string;
+        image: string;
+	}
+}
+
+const { content } = Astro.props
+---
+
+<html lang="en">
+    <head>
+		<DocumentHead pageTitle={content.title} ogTitle={content.title} ogDescription={content.description} ogImage={content.image} />
+	</head>
+    <body>
+        <GlobalHeader/>
+        
+        <main id="content" data-animation-fadein>
+            <article class="article-block">                
+                <PageHeader headerType="article" pageTitle={content.title} pubDate={content.pubDate} author={content.author} authorSlug={content.authorSlug} />
+
+                <slot />
+
+                <BackLink link="/articles/" linkText="See More Articles" />
+            </article>
+        </main>
+
+        <GlobalFooter/>
+    </body>
+</html>
+
+<style is:global lang="scss">
+.article-block {
+    margin: 0 auto var(--global-vertical-space);
+    width: min(var(--max-width-article), 100%);
+}
+</style>

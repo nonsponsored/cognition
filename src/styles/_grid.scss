@@ -1,0 +1,36 @@
+.grid {
+    display: grid;
+    gap: var(--gap);
+    margin: 0 auto var(--global-vertical-space);
+    max-width: var(--max-width-content);
+
+    main > &:first-child {
+        margin-block-start: 40px;
+    }
+}
+.grid--author {
+    grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
+    
+}
+.grid--card {
+    grid-template-columns: repeat(var(--columns), 1fr);
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .grid--card {
+        --columns: 2;
+    }
+}
+@media screen and(max-width: 1024px) {
+    .grid {
+        --gap: 30px 20px;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    .grid {
+        --gap: 30px;
+    }
+    .grid--card {
+        --columns: 3;
+    }
+}

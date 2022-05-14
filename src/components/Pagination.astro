@@ -1,0 +1,88 @@
+---
+const { page } = Astro.props
+---
+
+{page.lastPage > 1 &&
+<div class="pagination">
+    {page.url.prev ?
+    <a href={page.url.prev} class="pagination__prev">Prev</a>
+    :
+    <span class="disabled">Prev</span>
+    }
+    
+    <span class="pagination__status">{page.currentPage} of {page.lastPage}</span>
+
+    {page.url.next ?
+    <a href={page.url.next} class="pagination__next">Next</a>
+    :
+    <span class="disabled">Next</span>
+    }
+</div>
+}
+
+<style is:global lang="scss">
+.pagination {
+    --border-color: var(--color-primary-link);
+    --border-radius: calc(var(--global-border-radius) /2);
+
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    display: flex;
+    margin: calc(var(--global-vertical-space) * 2) auto;
+    width: fit-content;
+
+    a,
+    span {
+        align-items: center;
+        display: inline-flex;
+        font-size: 0.875rem;
+        font-variation-settings: "wght" 650;
+        height: 40px;
+    }
+
+    a,
+    .disabled {
+        justify-content: center;
+        text-decoration: none;
+        text-transform: uppercase;
+        width: 60px;
+    }
+    .disabled {
+        opacity: 0.25;
+    }
+    a {
+        background: linear-gradient(to bottom, var(--color-lightest) 50%, var(--color-primary-link) 50%, var(--color-primary-link) 100%);
+        background-size: 100% 200%;
+        text-decoration: none;
+    }
+    &__prev {
+        border-radius: var(--border-radius) 0 0 var(--border-radius);
+    }
+    &__next {
+        border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    }
+
+    &__status {
+        border: solid var(--border-color);
+        border-width: 0 1px;
+        justify-content: center;
+        letter-spacing: 1px;
+        padding: 0 10px;
+        width: 120px;
+    }
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    .pagination {
+
+        a {
+            transition: background-position 300ms 150ms var(--global-easing), color 300ms 150ms var(--global-easing);
+        }
+
+        a:hover {
+            background-position: 0 100%;
+            color: var(--color-lightest);
+        }
+    }
+}
+</style>

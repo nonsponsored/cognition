@@ -1,0 +1,67 @@
+---
+const posts = await Astro.glob('../../src/pages/articles/*.md')
+
+const postsFrontmatter = []
+posts.map(article => {
+    postsFrontmatter.push(
+       article.frontmatter
+    )
+})
+const filterUniques = new Set();
+const uniqueAuthors = postsFrontmatter.filter(obj => {
+  const isDuplicate = filterUniques.has(obj.author);
+    filterUniques.add(obj.author);
+    
+    return !isDuplicate;
+});
+
+uniqueAuthors.sort((a, b) => a.author.localeCompare(b.author))
+
+const { author, authorSlug, authorAvatar} = Astro.props
+---
+
+{author ?
+    <a href={'/authors/'+authorSlug} class="author-card">
+        <img src={authorAvatar} alt={author} />
+        <p class="link-effect">{author}</p>
+    </a>
+:
+<div class="grid grid--author">
+{uniqueAuthors.map(item =>
+    <a href={'/authors/'+item.authorSlug} class="author-card">
+        <img src={item.authorAvatar} alt={item.author} />
+        <p class="link-effect">{item.author}</p>
+    </a>
+)}
+</div>
+}
+
+<style is:global lang="scss">
+.author-card {
+    padding-block-end: 0.75em;
+    text-align: center;
+    text-decoration: none;
+
+    &:not(.grid &) {
+        display: inline-block;
+        width: min(225px, 100%);
+
+        img {
+            height: 225px;
+            width: 225px;
+        }
+    }
+    
+    img {
+        aspect-ratio: 1 / 1;
+        border: 1px solid var(--color-border);
+        border-radius: 50%;
+        margin: 0 auto 0.75em;
+        object-fit: cover;
+    }
+    p {
+        display: inline;
+        margin: 0 auto;
+    }
+}
+</style>

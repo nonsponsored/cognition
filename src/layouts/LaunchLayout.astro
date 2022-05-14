@@ -1,0 +1,22 @@
+---
+import DocumentHead from '@components/DocumentHead.astro';
+import Launch from '@components/Launch.astro'
+import GlobalHeader from '@components/GlobalHeader.astro'
+
+const { pageTitle="Launch", ogTitle, ogDescription, ogImage, launchEffect, launchColorStart, launchColorEnd } = Astro.props
+---
+
+<html lang="en">
+    <head>
+		<DocumentHead pageTitle={pageTitle} ogTitle={ogTitle} ogDescription={ogDescription} ogImage={ogImage} />
+	</head>
+    <body data-launch style={'--launch-color-end:' + launchColorEnd}>
+        <Launch launchEffect={launchEffect} launchColorStart={launchColorStart} launchColorEnd={launchColorEnd}/>
+
+        <GlobalHeader/>
+        
+        <main id="content">
+            <slot />
+        </main>
+    </body>
+</html>
