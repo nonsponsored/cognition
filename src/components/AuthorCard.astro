@@ -63,5 +63,10 @@ const { author, authorSlug, authorAvatar} = Astro.props
         display: inline;
         margin: 0 auto;
     }
+
+    .link-effect {
+        background-size: 100% calc(100%*var(--run,0) + .0em);
+        color: var(--color-primary-text);
+    }
 }
 </style>
