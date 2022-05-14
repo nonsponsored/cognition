@@ -22,7 +22,7 @@ ul:not([class]) a {
     padding: 0 1px;
     text-decoration: none;
     @media (prefers-reduced-motion: no-preference) {
-        transition: 300ms calc(var(--run,0) * 150ms) var(--global-easing);
+        transition: calc(var(--run,0) * 300ms) calc(var(--run,0) * 150ms) var(--global-easing);
     }
 }
 
