@@ -27,8 +27,11 @@ const { launchEffect, launchColorStart, launchColorEnd } = Astro.props
     .global-header {
         opacity: 0;
         position: fixed;
-        transition: opacity 300ms var(--global-easing), visibility 0s 300ms;
         visibility: hidden;
+    }
+
+    .global-header--ready {
+        transition: opacity 300ms var(--global-easing), visibility 0s 300ms;
     }
 
     .global-header--show {
@@ -305,6 +308,8 @@ class Launch {
     }
 
     manageGlobalHeader() {
+        this.header.classList.add('global-header--ready')
+
         // Show Global Header when 100px from bottom
         if ((window.innerHeight + window.top.scrollY) >= document.body.scrollHeight - 100) {
             this.header.classList.add('global-header--show')
