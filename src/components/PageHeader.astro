@@ -18,7 +18,7 @@ const { headerType, pageTitle, pubDate, author, authorSlug, authorAvatar } = Ast
 
 <style is:global lang="scss">
 .page-header {
-    margin: 0 auto var(--global-vertical-space);
+    margin: 0 auto calc(var(--global-vertical-space) * .75);
 	width: min(var(--max-width-content), 100%);
 
     h1 {

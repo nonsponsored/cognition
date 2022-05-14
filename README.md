@@ -28,6 +28,10 @@ Shared styles are imported into `/src/styles/global.scss`. This file is managed 
 
 Deploy Note: Use `yarn build` or `yarn scss & astro build` as the Build Command. 
 
+### Images
+
+Note that Card images are based on 16:9 ratio, and Author images are based on 1:1 ratio of 225x225.
+
 ### Typography
 
 In `/src/styles/_variables.scss`, define the `--min-viewport` and `--max-viewport` variables, currently set to `320` and `1440`. This is the range within the font will scale. Font sizes are then defined with `--min-font-size` and `--max-font-size`.

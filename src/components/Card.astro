@@ -2,7 +2,7 @@
 const { link, image, imageAlt, title, author, authorSlug, pubDate } = Astro.props
 ---
 
-<article class={!image ? 'card card--text' : 'card'}>
+<article class={!image ? 'card card--no-image' : 'card'}>
     <header>
         <a href={link}>
             { image ?
@@ -14,11 +14,18 @@ const { link, image, imageAlt, title, author, authorSlug, pubDate } = Astro.prop
             <h2 class="text-4">{title}</h2>
         </a>
         
-        {author &&
+        {author && pubDate?
             <p class="card__meta">
-            {authorSlug ? <a href={/authors/+authorSlug}>{author}</a> : {author} }
+            {authorSlug ? <a href={/authors/+authorSlug}>{author}</a> : <span>{author}</span> }
             {pubDate && <time>{pubDate}</time>}
-            </p>}
+            </p>
+            :
+            { pubDate && 
+                <p class="card__meta">
+                <time>{pubDate}</time>
+                </p>
+            }
+        }
     </header>
 </article>
 
@@ -26,7 +33,7 @@ const { link, image, imageAlt, title, author, authorSlug, pubDate } = Astro.prop
 .card {
     --aspect-ratio: 16 / 9;
 
-    &--text {
+    &--no-image {
         --border-color: var(--color-border);
         
         margin: 0 auto;
@@ -67,12 +74,12 @@ const { link, image, imageAlt, title, author, authorSlug, pubDate } = Astro.prop
 
     h2 {
         margin-block-end: 0.2em;
-        margin-block-start: 0.5rem;
+        margin-block-start: 1rem;
     }
     &__meta {
         --max-font-size: 1;
         font-variation-settings: "wght" 550;
-        margin-block-end: 0;
+        margin-block-end: 0.75em;
         
         a {
             background-size: 100% calc(100%*var(--run,0));
@@ -83,7 +90,7 @@ const { link, image, imageAlt, title, author, authorSlug, pubDate } = Astro.prop
         time {
             font-variation-settings: initial;
 
-            &::before {
+            &:not(:only-child)::before {
                 content: ' : ';
             }
         }
