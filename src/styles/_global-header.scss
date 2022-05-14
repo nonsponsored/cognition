@@ -336,7 +336,7 @@
 			padding: 10px 0 15px;
 			position: absolute;
             top: calc(100% - 1px);
-			transition: opacity 250ms var(--global-easing), visibility 0ms 250ms;
+			transition: opacity var(--global-easing), visibility;
             visibility: hidden;
             width: 200px;
 
@@ -373,7 +373,8 @@
         li:focus-within .global-header__nav-sublist {
             --w: 200px;
             opacity: 1;
-            transition-delay: 0ms, 0ms;
+            transition-delay: 1ms, 0ms;
+            transition-duration: 250ms, 0ms;
             visibility: visible;
         }
 	}
@@ -384,7 +385,8 @@
             /* Show nav sub-list on :hover */
             .global-header__nav-sublist {
                 opacity: 1;
-                transition-delay: 0ms, 0ms;
+                transition-delay: 1ms, 0ms;
+                transition-duration: 250ms, 0ms;
                 visibility: visible;
             }
         }
