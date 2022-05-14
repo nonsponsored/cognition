@@ -8,14 +8,68 @@ setup: |
 <PageHeader pageTitle="Guides & Demos" />
     
 
-<div class="text-block">
+<div class="text-block" style="--max-width-content: 1360px;">
 
 <p class="text-6">On this page:</p>
 
+- [Variables](#variables)
 - [Layouts](#layout-base)
 - [Containers](#container-grid)
 - [Components](#component-author-articles)
 
+---
+
+### Variables
+- Variables are managed in `/src/styles/_variables.scss`.
+- Variables can be overwritten in the files, within a component, or on containers like the `.text-block` controlling the content on this page.
+
+```astro
+/* Colors */
+:root {
+    --color-darkest: #000;
+    --color-lightest: #fff;
+    --color-accent: #008A03;
+    --color-warning: #b3001b;
+
+    --color-body-background: #fcfcfc;
+    --color-border: rgba(31, 31, 31, 0.15);
+
+    --color-header-background: #f3f3f3;
+    --color-header-border: var(--color-border);
+
+    --color-primary-nav-link: #313131;
+    --color-primary-nav-hover: #313131;
+
+    --color-primary-link: #02339E; 
+
+    --color-primary-headers: #30343F;
+    --color-primary-text: #313131;
+
+    /* Border Radius */
+    --global-border-radius: 15px;
+
+    /* Easing */
+    --global-easing: ease-in-out;
+
+    /* For font sizing */
+    --min-viewport: 20; // 320px
+    --max-viewport: 90; // 1440px
+
+    /* Heights */
+    --global-header-height: 60px;
+
+    /* Spacing */
+    --global-side-space: 20px;
+    --global-vertical-space: 50px;
+
+    /* Widths */
+    --max-width-article: 80ch;
+    --max-width-content: 1440px;
+    --max-width-media: 1280px;
+}
+```
+
+---
 ---
 
 ### Layout: Base

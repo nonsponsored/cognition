@@ -156,7 +156,7 @@ blockquote {
 }
 
 [id] {
-    scroll-margin-block-start: var(--global-header-height);
+    scroll-margin-top: var(--global-header-height);
 }
 
 code:not(pre code) {
