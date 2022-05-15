@@ -154,14 +154,6 @@ setup: |
 <ArticlesTout numberOfArticles="6" />
 ```
 
-### Component: Back Link
-- Appears at the bottom of each Articles.
-- Pass in `link` and `linkText` to use for other instances.
-
-```astro
-<BackLink link="/articles/" linkText="See More Articles" />
-```
-
 ### Component: Card
 - Pass in Frontmatter data to display article link, image, title, author name, author link, and publish date.
 - Use within `grid` with the `grid--card` option, but can be extended to other intances by managing the `width`.
@@ -177,6 +169,15 @@ setup: |
     authorSlug={post.frontmatter.authorSlug}
     pubDate={post.frontmatter.pubDate}
 />
+```
+
+
+### Component: CTA Link
+- Appears at the bottom of each Articles.
+- Pass in `link` and `linkText` to use for other instances.
+
+```astro
+<CTALink link="/articles/" linkText="See More Articles" />
 ```
 
 ### Component: Document Head

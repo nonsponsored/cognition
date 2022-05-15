@@ -1,6 +1,6 @@
 ---
 import Card from '@components/Card.astro'
-import BackLink from '@components/BackLink.astro'
+import CTALink from '@components/CTALink.astro'
 
 const articles = await Astro.glob('../../src/pages/articles/*.md')
 articles.sort((a, b) => new Date(b.frontmatter.pubDate) - new Date(a.frontmatter.pubDate))
@@ -22,4 +22,4 @@ const { numberOfArticles } = Astro.props
     )}
 </div>
 
-<BackLink link="/articles/" linkText="See More Articles" />
+<CTALink link="/articles/" linkText="See More Articles" />

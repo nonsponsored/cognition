@@ -3,7 +3,7 @@ import DocumentHead from '@components/DocumentHead.astro';
 import GlobalHeader from '@components/GlobalHeader.astro'
 import GlobalFooter from '@components/GlobalFooter.astro'
 import PageHeader from '@components/PageHeader.astro'
-import BackLink from '@components/BackLink.astro'
+import CTALink from '@components/CTALink.astro'
 
 export interface Props {
 	content: {
@@ -33,7 +33,7 @@ const { content } = Astro.props
 
                 <slot />
 
-                <BackLink link="/articles/" linkText="See More Articles" />
+                <CTALink link="/articles/" linkText="See More Articles" />
             </article>
         </main>
 
