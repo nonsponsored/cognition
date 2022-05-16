@@ -9,30 +9,31 @@ const currentPage = new URL(Astro.request.url);
         <button type="button" class="menu-button" data-global-menu>Open Navigation</button>
     
         <a href="/" class="global-header__logo"><img src="/img/global/logo.svg" alt="Cognition Logo" /></a>
-        
+        {currentPage.pathname}
+
         <nav class="global-header__nav" data-global-nav>
             <ul class="global-header__nav-list">
                 <li>
-                    <a href="/guides-and-demos/" aria-current={currentPage.pathname.includes('/guides-and-demos/') ? 'page' : undefined} data-has-subnav>Guides & Demos</a>
+                    <a href="/guides-and-demos/" aria-current={currentPage.pathname === ('/guides-and-demos') ? 'page' : undefined} data-has-subnav>Guides & Demos</a>
                     <ul class="global-header__nav-sublist">
                         <!-- 
                             - Duplicate the top level link if it has a sub-list, so it's accessible in the small screen menu.
                             - Set up aria-current for every sub-list link.
                         -->
-                        <li><a href="/guides-and-demos/" aria-current={currentPage.pathname.includes('/guides-and-demos/') ? 'page' : undefined}>Guides & Demos Home</a></li>
-                        <li><a href="/guides-and-demos/cards/" aria-current={currentPage.pathname === '/guides-and-demos/cards/' ? 'page' : undefined}>Cards</a></li>
-                        <li><a href="/guides-and-demos/image/" aria-current={currentPage.pathname === '/guides-and-demos/image/' ? 'page' : undefined}>Image</a></li>
-                        <li><a href="/guides-and-demos/launch-pull/" aria-current={currentPage.pathname === '/guides-and-demos/launch-pull/' ? 'page' : undefined}>Launch : Pull</a></li>
-                        <li><a href="/guides-and-demos/launch-stretch/" aria-current={currentPage.pathname === '/guides-and-demos/launch-stretch/' ? 'page' : undefined}>Launch : Stretch</a></li>
-                        <li><a href="/guides-and-demos/typography/" aria-current={currentPage.pathname === '/guides-and-demos/typography/' ? 'page' : undefined}>Typography</a></li>
-                        <li><a href="/guides-and-demos/video/" aria-current={currentPage.pathname === '/guides-and-demos/video/' ? 'page' : undefined}>Video</a></li>
+                        <li><a href="/guides-and-demos/" aria-current={currentPage.pathname === ('/guides-and-demos') ? 'page' : undefined}>Guides & Demos Home</a></li>
+                        <li><a href="/guides-and-demos/cards/" aria-current={currentPage.pathname === ('/guides-and-demos/cards') ? 'page' : undefined}>Cards</a></li>
+                        <li><a href="/guides-and-demos/image/" aria-current={currentPage.pathname === ('/guides-and-demos/image') ? 'page' : undefined}>Image</a></li>
+                        <li><a href="/guides-and-demos/launch-pull/" aria-current={currentPage.pathname === ('/guides-and-demos/launch-pull') ? 'page' : undefined}>Launch : Pull</a></li>
+                        <li><a href="/guides-and-demos/launch-stretch/" aria-current={currentPage.pathname === ('/guides-and-demos/launch-stretch') ? 'page' : undefined}>Launch : Stretch</a></li>
+                        <li><a href="/guides-and-demos/typography/" aria-current={currentPage.pathname === ('/guides-and-demos/typography') ? 'page' : undefined}>Typography</a></li>
+                        <li><a href="/guides-and-demos/video/" aria-current={currentPage.pathname === ('/guides-and-demos/video') ? 'page' : undefined}>Video</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="/articles/" aria-current={currentPage.pathname.includes('/articles/') ? 'page' : undefined}>Articles</a>
+                    <a href="/articles/" aria-current={currentPage.pathname === ('/articles/') ? 'page' : undefined}>Articles</a>
                 </li>
                 <li>
-                    <a href="/authors/" aria-current={currentPage.pathname.includes('/authors/') ? 'page' : undefined}>Authors</a>
+                    <a href="/authors/" aria-current={currentPage.pathname === ('/authors') ? 'page' : undefined}>Authors</a>
                 </li>
             </ul>
         </nav>
