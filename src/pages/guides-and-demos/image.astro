@@ -3,17 +3,20 @@ import BaseLayout from '@layouts/BaseLayout.astro'
 import PageHeader from '@components/PageHeader.astro'
 import Image from '@components/Image.astro'
 
-const { pageTitle='Image' } = Astro.props
+const { pageTitle = 'Image' } = Astro.props
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout {pageTitle}>
 
-    <PageHeader pageTitle={pageTitle}/>
+    <PageHeader {pageTitle} />
 
-    <Image imageWidth="natural" imageSrc="/img/generic/poster-dark.png" imageAlt="Dark Poster" caption="Optional image caption." />
+    <Image imageWidth="natural" imageSrc="/img/generic/poster-dark.png" imageAlt="Dark Poster"
+        caption="Optional image caption." />
 
-    <Image imageWidth="medium" imageSrc="/img/generic/poster-dark.png" imageAlt="Dark Poster" caption="Optional image caption." />
+    <Image imageWidth="medium" imageSrc="/img/generic/poster-dark.png" imageAlt="Dark Poster"
+        caption="Optional image caption." />
 
-    <Image imageWidth="narrow" imageSrc="/img/generic/poster-dark.png" imageAlt="Dark Poster" caption="Optional image caption." />
+    <Image imageWidth="narrow" imageSrc="/img/generic/poster-dark.png" imageAlt="Dark Poster"
+        caption="Optional image caption." />
 
 </BaseLayout>

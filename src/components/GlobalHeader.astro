@@ -7,32 +7,48 @@ const currentPage = new URL(Astro.request.url);
 <header class="global-header" data-global-header>
     <div class="global-header__content">
         <button type="button" class="menu-button" data-global-menu>Open Navigation</button>
-    
+
         <a href="/" class="global-header__logo"><img src="/img/global/logo.svg" alt="Cognition Logo" /></a>
 
         <nav class="global-header__nav" data-global-nav>
             <ul class="global-header__nav-list">
                 <li>
-                    <a href="/guides-and-demos/" aria-current={currentPage.pathname === ('/guides-and-demos') ? 'page' : undefined} data-has-subnav>Guides & Demos</a>
+                    <a href="/guides-and-demos/" aria-current={currentPage.pathname===('/guides-and-demos') ? 'page' :
+                        undefined} data-has-subnav>Guides & Demos</a>
                     <ul class="global-header__nav-sublist">
                         <!-- 
                             - Duplicate the top level link if it has a sub-list, so it's accessible in the small screen menu.
                             - Set up aria-current for every sub-list link.
                         -->
-                        <li><a href="/guides-and-demos/" aria-current={currentPage.pathname === ('/guides-and-demos') ? 'page' : undefined}>Guides & Demos Home</a></li>
-                        <li><a href="/guides-and-demos/cards/" aria-current={currentPage.pathname === ('/guides-and-demos/cards') ? 'page' : undefined}>Cards</a></li>
-                        <li><a href="/guides-and-demos/image/" aria-current={currentPage.pathname === ('/guides-and-demos/image') ? 'page' : undefined}>Image</a></li>
-                        <li><a href="/guides-and-demos/launch-pull/" aria-current={currentPage.pathname === ('/guides-and-demos/launch-pull') ? 'page' : undefined}>Launch : Pull</a></li>
-                        <li><a href="/guides-and-demos/launch-stretch/" aria-current={currentPage.pathname === ('/guides-and-demos/launch-stretch') ? 'page' : undefined}>Launch : Stretch</a></li>
-                        <li><a href="/guides-and-demos/typography/" aria-current={currentPage.pathname === ('/guides-and-demos/typography') ? 'page' : undefined}>Typography</a></li>
-                        <li><a href="/guides-and-demos/video/" aria-current={currentPage.pathname === ('/guides-and-demos/video') ? 'page' : undefined}>Video</a></li>
+                        <li><a href="/guides-and-demos/" aria-current={currentPage.pathname===('/guides-and-demos')
+                                ? 'page' : undefined}>Guides & Demos Home</a></li>
+                        <li><a href="/guides-and-demos/cards/"
+                                aria-current={currentPage.pathname===('/guides-and-demos/cards') ? 'page' :
+                                undefined}>Cards</a></li>
+                        <li><a href="/guides-and-demos/image/"
+                                aria-current={currentPage.pathname===('/guides-and-demos/image') ? 'page' :
+                                undefined}>Image</a></li>
+                        <li><a href="/guides-and-demos/launch-pull/"
+                                aria-current={currentPage.pathname===('/guides-and-demos/launch-pull') ? 'page' :
+                                undefined}>Launch : Pull</a></li>
+                        <li><a href="/guides-and-demos/launch-stretch/"
+                                aria-current={currentPage.pathname===('/guides-and-demos/launch-stretch') ? 'page' :
+                                undefined}>Launch : Stretch</a></li>
+                        <li><a href="/guides-and-demos/typography/"
+                                aria-current={currentPage.pathname===('/guides-and-demos/typography') ? 'page' :
+                                undefined}>Typography</a></li>
+                        <li><a href="/guides-and-demos/video/"
+                                aria-current={currentPage.pathname===('/guides-and-demos/video') ? 'page' :
+                                undefined}>Video</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="/articles/" aria-current={currentPage.pathname === ('/articles/') ? 'page' : undefined}>Articles</a>
+                    <a href="/articles/" aria-current={currentPage.pathname===('/articles/') ? 'page' :
+                        undefined}>Articles</a>
                 </li>
                 <li>
-                    <a href="/authors/" aria-current={currentPage.pathname === ('/authors') ? 'page' : undefined}>Authors</a>
+                    <a href="/authors/" aria-current={currentPage.pathname===('/authors') ? 'page' :
+                        undefined}>Authors</a>
                 </li>
             </ul>
         </nav>
@@ -41,59 +57,59 @@ const currentPage = new URL(Astro.request.url);
 
 
 <script>
-class GlobalHeader {
-	constructor(selector) {
-		// Define elements
-        this.header = document.querySelector(selector)
-        this.nav = this.header.querySelector('[data-global-nav]')
-        this.menuButton = this.header.querySelector('[data-global-menu]')
-        this.mq = window.matchMedia('(max-width: 1024px)')
+    class GlobalHeader {
+        constructor(selector) {
+            // Define elements
+            this.header = document.querySelector(selector)
+            this.nav = this.header.querySelector('[data-global-nav]')
+            this.menuButton = this.header.querySelector('[data-global-menu]')
+            this.mq = window.matchMedia('(max-width: 1024px)')
 
-        // Reset on resize
-        if (this.mq?.addEventListener) {
-            this.mq.addEventListener('change', () => {
-                this.resetHeader()
-            })
-        } else {
-            // For browsers that don't support addEventListener on the MediaQueryList object
-            this.mq.addListener( () => {
-                this.resetHeader()
-            })
-        }
-        
-        // Suppress top level links on small screen if they have a sub-nav, so sub-nav can be accessed
-        this.nav.addEventListener('click', (e) => {
-            if (e.target.matches('[data-has-subnav]') && this.mq.matches){
-                e.preventDefault()
-                e.target.classList.toggle('open--sublist')
-            }
-        });
-
-        // Menu Button : Show / Hide Small Screen Nav
-        this.menuButton.addEventListener('click', () => {
-            // Toggle aria
-            if(!this.menuButton.hasAttribute('aria-expanded')) {
-                this.menuButton.setAttribute('aria-expanded','true');	
+            // Reset on resize
+            if (this.mq.addEventListener) {
+                this.mq.addEventListener('change', () => {
+                    this.resetHeader()
+                })
             } else {
-                this.menuButton.removeAttribute('aria-expanded');
+                // For browsers that don't support addEventListener on the MediaQueryList object
+                this.mq.addListener(() => {
+                    this.resetHeader()
+                })
             }
-        })
-        
-        // Escape Key  : Show / Hide Small Screen Nav
-        document.addEventListener('keydown', (e) => {
-            if ( this.menuButton.hasAttribute('aria-expanded') ) {
-                if (e.key == 'Escape') {
-                    // Remove aria to close
+
+            // Suppress top level links on small screen if they have a sub-nav, so sub-nav can be accessed
+            this.nav.addEventListener('click', (e) => {
+                if (e.target.matches('[data-has-subnav]') && this.mq.matches) {
+                    e.preventDefault()
+                    e.target.classList.toggle('open--sublist')
+                }
+            });
+
+            // Menu Button : Show / Hide Small Screen Nav
+            this.menuButton.addEventListener('click', () => {
+                // Toggle aria
+                if (!this.menuButton.hasAttribute('aria-expanded')) {
+                    this.menuButton.setAttribute('aria-expanded', 'true');
+                } else {
                     this.menuButton.removeAttribute('aria-expanded');
                 }
-            }
-        })
-	}
+            })
 
-    // Reset
-    resetHeader() {
-        this.menuButton.removeAttribute('aria-expanded');
+            // Escape Key  : Show / Hide Small Screen Nav
+            document.addEventListener('keydown', (e) => {
+                if (this.menuButton.hasAttribute('aria-expanded')) {
+                    if (e.key == 'Escape') {
+                        // Remove aria to close
+                        this.menuButton.removeAttribute('aria-expanded');
+                    }
+                }
+            })
+        }
+
+        // Reset
+        resetHeader() {
+            this.menuButton.removeAttribute('aria-expanded');
+        }
     }
-}
-new GlobalHeader('[data-global-header]')
+    new GlobalHeader('[data-global-header]')
 </script>

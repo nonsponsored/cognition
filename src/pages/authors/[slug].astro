@@ -5,7 +5,7 @@ import AuthorArticles from '@components/AuthorArticles.astro'
 
 export async function getStaticPaths() {
     const articles = await Astro.glob('../articles/*.md')
-    
+
     articles.sort((a, b) => new Date(b.frontmatter.pubDate) - new Date(a.frontmatter.pubDate))
 
     return articles.map((article) => {
@@ -17,13 +17,13 @@ export async function getStaticPaths() {
 }
 
 const { slug } = Astro.params;
-const { articles, article, pageTitle=article.frontmatter.author } = Astro.props
+const { articles, article, pageTitle = article.frontmatter.author } = Astro.props
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout {pageTitle}>
 
-    <PageHeader headerType="author" pageTitle={pageTitle} authorAvatar={article.frontmatter.authorAvatar}/>
+    <PageHeader headerType="author" {pageTitle} authorAvatar={article.frontmatter.authorAvatar} />
 
-    <AuthorArticles articles={articles} slug={slug} />
+    <AuthorArticles {articles} {slug} />
 
 </BaseLayout>

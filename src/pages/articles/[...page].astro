@@ -10,27 +10,21 @@ export async function getStaticPaths({ paginate }) {
     return paginate(sortedPosts, { pageSize: 15 });
 }
 
-const { page, pageTitle='Articles' } = Astro.props
+const { page, pageTitle = 'Articles' } = Astro.props
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout {pageTitle}>
 
-    <PageHeader pageTitle={pageTitle} />
+    <PageHeader {pageTitle} />
 
     <div class="grid grid--card">
         {page.data.map(post =>
-            <Card
-                link={post.url}
-                image={post.frontmatter.imageHero}
-                imageAlt={post.frontmatter.imageHeroAlt}
-                title={post.frontmatter.title}
-                author={post.frontmatter.author}
-                authorSlug={post.frontmatter.authorSlug}
-                pubDate={post.frontmatter.pubDate}
-            />
+        <Card link={post.url} image={post.frontmatter.imageHero} imageAlt={post.frontmatter.imageHeroAlt}
+            title={post.frontmatter.title} author={post.frontmatter.author} authorSlug={post.frontmatter.authorSlug}
+            pubDate={post.frontmatter.pubDate} />
         )}
     </div>
 
-    <Pagination page={page} />
-    
+    <Pagination {page} />
+
 </BaseLayout>

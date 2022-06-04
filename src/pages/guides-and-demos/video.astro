@@ -3,27 +3,17 @@ import BaseLayout from '@layouts/BaseLayout.astro'
 import PageHeader from '@components/PageHeader.astro'
 import Video from '@components/Video.astro'
 
-const { pageTitle='Video' } = Astro.props
+const { pageTitle = 'Video' } = Astro.props
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout {pageTitle}>
 
-    <PageHeader pageTitle={pageTitle}/>
+    <PageHeader {pageTitle} />
 
-    <Video
-        actionColor="var(--color-accent)"
-        iframeSrc="https://www.youtube-nocookie.com/embed/dsTXcSeAZq8"
-        videoTitle="Astro in 100 Seconds"
-        poster="/img/generic/poster-dark.png"
-        posterAlt="Astro Logo"
-    />
+    <Video actionColor="var(--color-accent)" iframeSrc="https://www.youtube-nocookie.com/embed/dsTXcSeAZq8"
+        videoTitle="Astro in 100 Seconds" poster="/img/generic/poster-dark.png" posterAlt="Astro Logo" />
 
-    <Video
-        actionColor="var(--color-accent)"
-        iframeSrc="https://www.youtube-nocookie.com/embed/dsTXcSeAZq8"
-        videoTitle="Astro in 100 Seconds"
-        poster="/img/generic/poster-light.png"
-        posterAlt="Astro Logo"
-    />
+    <Video actionColor="var(--color-accent)" iframeSrc="https://www.youtube-nocookie.com/embed/dsTXcSeAZq8"
+        videoTitle="Astro in 100 Seconds" poster="/img/generic/poster-light.png" posterAlt="Astro Logo" />
 
 </BaseLayout>

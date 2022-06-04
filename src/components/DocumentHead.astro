@@ -1,5 +1,5 @@
 ---
-const { siteName='Cognition', pageTitle, ogTitle=siteName + ' : ' + pageTitle, ogDescription='Cognition Theme', ogImage='/img/social/share-image.png' } = Astro.props
+const { siteName = 'Cognition', pageTitle, ogTitle = siteName + ' : ' + pageTitle, ogDescription = 'Cognition Theme', ogImage = '/img/social/share-image.png' } = Astro.props
 ---
 
 <meta charset="utf-8" />
@@ -14,5 +14,5 @@ const { siteName='Cognition', pageTitle, ogTitle=siteName + ' : ' + pageTitle, o
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/img/global/apple-touch-icon.png">
-<link rel="stylesheet" href={import.meta.env.MODE === 'development' ? '/src/styles/global.scss' : '/css/global.css'}/>
-<title>{siteName}{pageTitle && ' : ' + pageTitle}</title>
+<link rel="stylesheet" href={import.meta.env.MODE==='development' ? '/src/styles/global.scss' : '/css/global.css' } />
+<title>{siteName}{(pageTitle != true && pageTitle) && ' : ' + pageTitle}</title>

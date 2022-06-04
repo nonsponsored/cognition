@@ -3,10 +3,10 @@ layout: '@layouts/BaseLayout.astro'
 setup: |
   import PageHeader from '@components/PageHeader.astro'
   import Card from '@components/Card.astro'
+title: 'Guides & Demos'
 ---
 
-<PageHeader pageTitle="Guides & Demos" />
-    
+<PageHeader pageTitle={frontmatter.title} />
 
 <div class="text-block" style="--max-width-content: 1360px;">
 
@@ -16,6 +16,7 @@ setup: |
 - [Layouts](#layout-base)
 - [Containers](#container-grid)
 - [Components](#component-author-articles)
+- [RSS](#rss)
 
 ---
 
@@ -273,6 +274,16 @@ setup: |
     posterAlt="Astro Logo"
 />
 ```
+
+---
+---
+
+### RSS
+- Note that `@astrojs/rss 0.2.0` doesn't seem to recognize the site defined in `astro.config.mjs`, so site URL needs to be defined in `rss.xml.js` for now.
+
+---
+---
+
 
 <p class="text-6">Other Guides & Demos:</p>
 

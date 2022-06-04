@@ -3,12 +3,12 @@ import BaseLayout from '@layouts/BaseLayout.astro'
 import PageHeader from '@components/PageHeader.astro'
 import AuthorCard from '@components/AuthorCard.astro'
 
-const { pageTitle='Authors' } = Astro.props
+const { pageTitle = 'Authors' } = Astro.props
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout {pageTitle}>
 
-    <PageHeader pageTitle={pageTitle} />
+    <PageHeader {pageTitle} />
 
     <AuthorCard />
 

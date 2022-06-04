@@ -2,47 +2,52 @@
 import BaseLayout from '@layouts/BaseLayout.astro'
 import PageHeader from '@components/PageHeader.astro'
 
-const { pageTitle='Typography' } = Astro.props
+const { pageTitle = 'Typography' } = Astro.props
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout {pageTitle}>
 
-    <PageHeader pageTitle={pageTitle}/>
+    <PageHeader {pageTitle} />
 
     <div class="text-block">
         <h1>h1: The Wonder of Webfonts</h1>
         <p class="text-1">.text-1: The Wonder of Webfonts</p>
 
-        <hr/>
+        <hr />
 
         <h2>h2: The Wonder of Webfonts</h2>
         <p class="text-2">.text-2: The Wonder of Webfonts</p>
 
-        <hr/>
+        <hr />
 
         <h3>h3: The Wonder of Webfonts</h3>
         <p class="text-3">.text-3: The Wonder of Webfonts</p>
 
-        <hr/>
+        <hr />
 
         <h4>h4: The Wonder of Webfonts</h4>
         <p class="text-4">.text-4: The Wonder of Webfonts</p>
 
-        <hr/>
+        <hr />
 
         <h5>h5: The Wonder of Webfonts</h5>
         <p class="text-5">.text-5: The Wonder of Webfonts</p>
 
-        <hr/>
+        <hr />
 
         <h6>h6: The Wonder of Webfonts</h6>
         <p class="text-6">.text-6: The Wonder of Webfonts</p>
 
-        <hr/>
+        <hr />
 
-        <p>Paragraph <a href="#">Lorem ipsum dolor</a> sit amet, <em>consectetur adipiscing elit</em>. Etiam placerat eleifend quam. Sed at luctus quam. <b>Integer turpis</b> leo, dictum sit amet posuere sit amet, dictum quis eros. Fusce vitae nisl elementum, tempus mauris nec, ultricies lorem. In gravida hendrerit mollis. Sed nec lorem id dui sollicitudin commodo. Nunc orci sem, <strong>dictum eget volutpat</strong> vitae, hendrerit mattis metus. Sed hendrerit sit amet mauris at blandit. Proin mattis ligula neque, ac tincidunt magna ultrices sit amet. Nunc id lectus velit. Nunc aliquam viverra odio, in ornare sem feugiat et.</p>
+        <p>Paragraph <a href="#">Lorem ipsum dolor</a> sit amet, <em>consectetur adipiscing elit</em>. Etiam placerat
+            eleifend quam. Sed at luctus quam. <b>Integer turpis</b> leo, dictum sit amet posuere sit amet, dictum quis
+            eros. Fusce vitae nisl elementum, tempus mauris nec, ultricies lorem. In gravida hendrerit mollis. Sed nec
+            lorem id dui sollicitudin commodo. Nunc orci sem, <strong>dictum eget volutpat</strong> vitae, hendrerit
+            mattis metus. Sed hendrerit sit amet mauris at blandit. Proin mattis ligula neque, ac tincidunt magna
+            ultrices sit amet. Nunc id lectus velit. Nunc aliquam viverra odio, in ornare sem feugiat et.</p>
 
-        <hr/>
+        <hr />
 
         <ul>
             <li>Unordered list item 1</li>
@@ -51,7 +56,7 @@ const { pageTitle='Typography' } = Astro.props
             <li>Unordered list item 4</li>
         </ul>
 
-        <hr/>
+        <hr />
 
         <ol>
             <li>Ordered list item 1</li>
@@ -66,14 +71,16 @@ const { pageTitle='Typography' } = Astro.props
             <li>Ordered list item 10</li>
         </ol>
 
-        <hr/>
+        <hr />
 
         <blockquote>
-            <p>Blockquote: Hendrerit duis bibendum cras class quis vitae malesuada ad imperdiet hac, montes nunc luctus dignissim semper ultricies iaculis faucibus libero commodo, aptent adipiscing vehicula turpis magnis dapibus rhoncus aenean tortor.</p>
+            <p>Blockquote: Hendrerit duis bibendum cras class quis vitae malesuada ad imperdiet hac, montes nunc luctus
+                dignissim semper ultricies iaculis faucibus libero commodo, aptent adipiscing vehicula turpis magnis
+                dapibus rhoncus aenean tortor.</p>
             <footer>— <a href="https://astro.build">Astro</a></footer>
         </blockquote>
 
-        <hr/>
+        <hr />
 
         <figcaption>Figcaption: In gravida hendrerit mollis. Sed nec lorem id dui sollicitudin commodo.</figcaption>
     </div>

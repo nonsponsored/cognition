@@ -72,9 +72,7 @@ In `/src/styles/_variables.scss`, define the `--min-viewport` and `--max-viewpor
 | `yarn build`   | Build your production site to `./dist/`     |
 
 ### Known Issues
-- **Do not update to Astro Beta 28** yet, as it seems to have changed how CSS files are handled.
 - Announcement scroll effect jitters on Chrome some, if you scroll too fast or change direction fast. This despite using hardware acceleration and throttling.
 
 ### What Comes Next...Ideally
-- RSS
 - Dynamically generated navigation

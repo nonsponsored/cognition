@@ -3,20 +3,29 @@ import DocumentHead from '@components/DocumentHead.astro';
 import GlobalHeader from '@components/GlobalHeader.astro'
 import GlobalFooter from '@components/GlobalFooter.astro'
 
-const { pageTitle, ogTitle, ogDescription, ogImage } = Astro.props
+export interface Props {
+    content: {
+        title: string;
+    }
+}
+
+const { content, pageTitle, ogTitle, ogDescription, ogImage } = Astro.props
 ---
 
 <html lang="en">
-    <head>
-		<DocumentHead pageTitle={pageTitle} ogTitle={ogTitle} ogDescription={ogDescription} ogImage={ogImage} />
-	</head>
-    <body>
-        <GlobalHeader/>
-        
-        <main id="content" data-animation-fadein>
-            <slot />
-        </main>
 
-        <GlobalFooter/>
-    </body>
+<head>
+    <DocumentHead pageTitle={pageTitle || content.title} {ogTitle} {ogDescription} {ogImage} />
+</head>
+
+<body>
+    <GlobalHeader />
+
+    <main id="content" data-animation-fadein>
+        <slot />
+    </main>
+
+    <GlobalFooter />
+</body>
+
 </html>
