@@ -8,8 +8,8 @@ description: 'Short description of article goes here.'
 pubDate: 'May 13, 2022'
 author: 'Håkon Wium Lie'
 authorSlug: 'hakon-wium-lie'
-authorAvatar: '/img/author/hakon-wium-lie.jpg'
-imageHero: '/img/article/poster-css.png'
+authorAvatar: '/assets/img/author/hakon-wium-lie.jpg'
+imageHero: '/assets/img/article/poster-css.png'
 imageHeroAlt: 'CSS Poster'
 ---
 
@@ -35,7 +35,7 @@ Pretium lobortis cras varius nisl proin aliquam est blandit cursus ut, ante maec
 <Video
     actionColor="var(--color-accent)"
     iframeSrc="https://www.youtube-nocookie.com/embed/dsTXcSeAZq8"
-    poster="/img/generic/poster-dark.png"
+    poster="/assets/img/generic/poster-dark.png"
     posterAlt="Astro Logo"
     videoTitle="Astro in 100 Seconds"
 />

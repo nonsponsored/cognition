@@ -8,8 +8,8 @@ description: 'Short description of article goes here.'
 pubDate: 'May 12, 2022'
 author: 'Brendan Eich'
 authorSlug: 'brendan-eich'
-authorAvatar: '/img/author/brendan-eich.jpg'
-imageHero: '/img/article/poster-js.png'
+authorAvatar: '/assets/img/author/brendan-eich.jpg'
+imageHero: '/assets/img/article/poster-js.png'
 imageHeroAlt: 'JS Poster'
 ---
 
@@ -35,7 +35,7 @@ Pretium lobortis cras varius nisl proin aliquam est blandit cursus ut, ante maec
 <Video
     actionColor="#e5a329"
     iframeSrc="https://www.youtube-nocookie.com/embed/dsTXcSeAZq8"
-    poster="/img/generic/poster-light.png"
+    poster="/assets/img/generic/poster-light.png"
     posterAlt="Astro Logo"
     videoTitle="Astro in 100 Seconds"
 />

@@ -140,7 +140,7 @@ title: 'Guides & Demos'
 <AuthorCard  />
 
 <!-- Single -->
-<AuthorCard author="Author Name" authorSlug="#" authorAvatar="/img/generic/poster-dark.png" />
+<AuthorCard author="Author Name" authorSlug="#" authorAvatar="/assets/img/generic/poster-dark.png" />
 ```
 
 ### Component: Articles Tout
@@ -200,7 +200,7 @@ title: 'Guides & Demos'
 <meta data-hid="twitter:description" name="twitter:description" content={ogDescription}>
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/img/global/apple-touch-icon.png">
+<link rel="apple-touch-icon" href="/assets/img/global/apple-touch-icon.png">
 <link rel="stylesheet" href={import.meta.env.MODE === 'development' ? '/src/styles/global.scss' : '/css/global.css'}/>
 <title>{siteName}{pageTitle && ' : ' + pageTitle}</title>
 ```
@@ -270,7 +270,7 @@ title: 'Guides & Demos'
     actionColor="var(--color-accent)"
     iframeSrc="https://www.youtube-nocookie.com/embed/dsTXcSeAZq8"
     videoTitle="Astro in 100 Seconds"
-    poster="/img/generic/poster-dark.png"
+    poster="/assets/img/generic/poster-dark.png"
     posterAlt="Astro Logo"
 />
 ```

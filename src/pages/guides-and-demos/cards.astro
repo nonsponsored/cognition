@@ -16,10 +16,10 @@ const { pageTitle = 'Cards' } = Astro.props
     </div>
 
     <div class="grid grid--card">
-        <Card link="#" image="/img/generic/poster-brand.png" imageAlt="Brand Poster"
+        <Card link="#" image="/assets/img/generic/poster-brand.png" imageAlt="Brand Poster"
             title="Has All Data and Linked Author" author="Author Name" authorSlug="#" pubDate="May 13, 2022" />
 
-        <Card link="#" image="/img/generic/poster-dark.png" imageAlt="Brand Poster"
+        <Card link="#" image="/assets/img/generic/poster-dark.png" imageAlt="Brand Poster"
             title="Has All Data but no Author Link" author="Author Name" pubDate="May 13, 2022" />
 
         <Card link="#" title="No Image and No Author" pubDate="May 13, 2022" />
@@ -34,6 +34,6 @@ const { pageTitle = 'Cards' } = Astro.props
 
     <div class="text-block">
         <h2 class="text-3">Author Card: Single</h2>
-        <AuthorCard author="Author Name" authorSlug="#" authorAvatar="/img/generic/poster-dark.png" />
+        <AuthorCard author="Author Name" authorSlug="#" authorAvatar="/assets/img/generic/poster-dark.png" />
     </div>
 </BaseLayout>

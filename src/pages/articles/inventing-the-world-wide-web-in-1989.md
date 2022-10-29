@@ -8,8 +8,8 @@ description: 'Short description of article goes here.'
 pubDate: 'May 11, 2022'
 author: 'Tim Berners-Lee'
 authorSlug: 'tim-berners-lee'
-authorAvatar: '/img/author/tim-berners-lee.jpg'
-imageHero: '/img/article/poster-html.png'
+authorAvatar: '/assets/img/author/tim-berners-lee.jpg'
+imageHero: '/assets/img/article/poster-html.png'
 imageHeroAlt: 'HTML Poster'
 ---
 
@@ -34,7 +34,7 @@ Pretium lobortis cras varius nisl proin aliquam est blandit cursus ut, ante maec
 <Video
     actionColor="#ff5d01"
     iframeSrc="https://www.youtube-nocookie.com/embed/dsTXcSeAZq8"
-    poster="/img/generic/poster-brand.png"
+    poster="/assets/img/generic/poster-brand.png"
     posterAlt="Astro Logo"
     videoTitle="Astro in 100 Seconds"
 />

@@ -7,7 +7,7 @@ const { imageWidth, imageSrc, imageAlt, caption } = Astro.props
     <picture>
         <img src={imageSrc} alt={imageAlt} />
     </picture>
-    {caption && <figcaption>{caption}</figcaption>}
+    <figcaption>{caption}</figcaption>
     :
     <p class="warning">Missing image source or alt text.</p>
     }
@@ -62,7 +62,7 @@ const { imageWidth, imageSrc, imageAlt, caption } = Astro.props
         margin: 0 auto;
     }
 
-    figcaption {
+    figcaption:not(:empty) {
         margin: 0 auto;
         padding: 0.25em 1em;
     }
