@@ -5,7 +5,7 @@ description: 'Short description of article goes here.'
 pubDate: 'May 10, 2022'
 author: 'Tim Berners-Lee'
 authorSlug: 'tim-berners-lee'
-authorAvatar: '/img/author/tim-berners-lee.jpg'
+authorAvatar: '/assets/img/author/tim-berners-lee.jpg'
 ---
 
 Lorem ipsum dolor sit amet consectetur adipiscing elit nisl eu tortor nec rhoncus purus tempor integer natoque, morbi cursus rutrum mi fringilla egestas ex suscipit maecenas ac urna ultrices habitant risus. Urna eu feugiat congue tempor morbi vestibulum luctus bibendum consequat, fringilla himenaeos volutpat ultrices fames facilisi interdum nullam. Interdum dapibus erat metus tincidunt condimentum ultrices ut a vulputate dolor dictum senectus fames, commodo ipsum magnis consequat penatibus himenaeos lacinia maecenas vivamus tempor augue.

@@ -14,17 +14,13 @@ const { link, image, imageAlt, title, author, authorSlug, pubDate } = Astro.prop
             <h2 class="text-4">{title}</h2>
         </a>
         
-        {author && pubDate?
+        {author && pubDate ?
             <p class="card__meta">
-            {authorSlug ? <a href={/authors/+authorSlug}>{author}</a> : <span>{author}</span> }
-            {pubDate && <time>{pubDate}</time>}
+                {authorSlug ? <a href={/authors/+authorSlug}>{author}</a> : <span>{author}</span> }
+                {pubDate && <time>{pubDate}</time>}
             </p>
             :
-            { pubDate && 
-                <p class="card__meta">
-                <time>{pubDate}</time>
-                </p>
-            }
+            <p class="card__meta"><time>{pubDate}</time></p>
         }
     </header>
 </article>
@@ -47,7 +43,6 @@ const { link, image, imageAlt, title, author, authorSlug, pubDate } = Astro.prop
                 border-radius: var(--global-border-radius);
                 content: '';
                 display: block;
-
                 @supports not (aspect-ratio: 1 / 1) {
                     padding-bottom: 56.25%;
                 }

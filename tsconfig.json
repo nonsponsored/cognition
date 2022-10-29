@@ -1,11 +1,13 @@
 {
     "compilerOptions": {
         "baseUrl": ".",
+        "moduleResolution": "node",
         "paths": {
             "@components/*": ["src/components/*"],
             "@layouts/*": ["src/layouts/*"],
+            "@pages/*": ["src/pages/*"],
+            "@styles/*": ["src/styles/*"],
             "@utilities/*": ["src/utilities/*"]
-        },
-        "moduleResolution": "node"
+        }
     }
 }
