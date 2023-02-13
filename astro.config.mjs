@@ -7,9 +7,6 @@ import mdx from "@astrojs/mdx";
 export default defineConfig({
   // Enable the Vue renderer to support Vue components.
   // renderers: ['@astrojs/renderer-vue'],
-  legacy: {
-    astroFlavoredMarkdown: true
-  },
   site: 'https://cognition-theme.netlify.app/',
   integrations: [mdx()]
 });
