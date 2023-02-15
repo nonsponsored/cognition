@@ -1,8 +1,5 @@
 ---
 layout: '@layouts/ArticleLayout.astro'
-setup: |
-  import Image from '@components/Image.astro'
-  import Video from '@components/Video.astro'
 title: 'Inventing the World Wide Web in 1989'
 description: 'Short description of article goes here.'
 pubDate: 'May 11, 2022'
@@ -12,6 +9,8 @@ authorAvatar: '/assets/img/author/tim-berners-lee.jpg'
 imageHero: '/assets/img/article/poster-html.png'
 imageHeroAlt: 'HTML Poster'
 ---
+import Image from '@components/Image.astro'
+import Video from '@components/Video.astro'
 
 <Image imageWidth="narrow" imageSrc={frontmatter.imageHero} imageAlt={frontmatter.imageHeroAlt} />
 
@@ -28,7 +27,8 @@ Fusce vulputate ac ullamcorper commodo blandit sed habitant duis sapien urna orc
 ### Heading 3
 Pretium lobortis cras varius nisl proin aliquam est blandit cursus ut, ante maecenas turpis posuere hendrerit quisque ullamcorper ligula id. Congue habitant conubia egestas lorem nec ante turpis pharetra commodo platea rutrum, et montes pellentesque a praesent pulvinar dictumst molestie laoreet massa. Mauris tristique purus ridiculus tempus nisl sociosqu integer maecenas mi nisi taciti, eleifend non consectetur fames venenatis quis adipiscing nulla praesent. Odio class velit justo quisque tempus taciti maximus integer turpis tristique gravida potenti, lobortis tellus mus scelerisque nostra dictum semper risus urna sed ornare.
 
-> Blockquote Hendrerit duis bibendum cras class quis vitae malesuada ad imperdiet hac, montes nunc luctus dignissim semper ultricies iaculis faucibus libero commodo, aptent adipiscing vehicula turpis magnis dapibus rhoncus aenean tortor. 
+> Blockquote Hendrerit duis bibendum cras class quis vitae malesuada ad imperdiet hac, montes nunc luctus dignissim semper ultricies iaculis faucibus libero commodo, aptent adipiscing vehicula turpis magnis dapibus rhoncus aenean tortor.
+>
 > <footer>— <a href="https://astro.build">Astro</a></footer>
 
 <Video

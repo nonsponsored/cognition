@@ -1,8 +1,5 @@
 ## Cognition
 
-### Status
-Sizable and extensive rework from the initial release, much more of an out-of-the-box starter now.
-
 ### What It Is
 Starter theme for Astro (https://astro.build/) that's more than a blog, and uses no other frameworks.
 

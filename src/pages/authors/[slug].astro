@@ -4,9 +4,9 @@ import PageHeader from '@components/PageHeader.astro'
 import AuthorArticles from '@components/AuthorArticles.astro'
 
 export async function getStaticPaths() {
-    const articles = await Astro.glob('../articles/*.md')
+    const articles = await Astro.glob('../articles/*.mdx')
 
-    articles.sort((a, b) => new Date(b.frontmatter.pubDate) - new Date(a.frontmatter.pubDate))
+    articles.sort((a, b) => +new Date(b.frontmatter.pubDate) - +new Date(a.frontmatter.pubDate)) // Unary + will coerce to number
 
     return articles.map((article) => {
         return {

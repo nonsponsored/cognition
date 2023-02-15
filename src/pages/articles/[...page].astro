@@ -5,8 +5,8 @@ import Card from '@components/Card.astro'
 import Pagination from '@components/Pagination.astro'
 
 export async function getStaticPaths({ paginate }) {
-    const allPosts = await Astro.glob('../articles/*.md')
-    const sortedPosts = allPosts.sort((a, b) => new Date(b.frontmatter.pubDate) - new Date(a.frontmatter.pubDate))
+    const allPosts = await Astro.glob('../articles/*.mdx')
+    const sortedPosts = allPosts.sort((a, b) => +new Date(b.frontmatter.pubDate) - +new Date(a.frontmatter.pubDate)) // Unary + will coerce to number
     return paginate(sortedPosts, { pageSize: 15 });
 }
 

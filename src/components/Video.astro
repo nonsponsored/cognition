@@ -231,6 +231,7 @@ const { actionColor, iframeSrc, poster, posterAlt, videoTitle } = Astro.props
 
 <script>
 class VideoBlock {
+    [x: string]: any;
 	constructor(block) {
 		// Only if exists
 		if (!block) {

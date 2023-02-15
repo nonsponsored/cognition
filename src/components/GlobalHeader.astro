@@ -58,7 +58,8 @@ const currentPage = new URL(Astro.request.url);
 
 <script>
     class GlobalHeader {
-        constructor(selector) {
+        [x: string]: any
+        constructor(selector: string) {
             // Define elements
             this.header = document.querySelector(selector)
             this.nav = this.header.querySelector('[data-global-nav]')

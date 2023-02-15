@@ -2,8 +2,8 @@
 import Card from '@components/Card.astro'
 import CTALink from '@components/CTALink.astro'
 
-const articles = await Astro.glob('../../src/pages/articles/*.md')
-articles.sort((a, b) => new Date(b.frontmatter.pubDate) - new Date(a.frontmatter.pubDate))
+const articles = await Astro.glob('../../src/pages/articles/*.mdx')
+articles.sort((a, b) => +new Date(b.frontmatter.pubDate) - +new Date(a.frontmatter.pubDate)) // Unary + will coerce to number
 
 const { numberOfArticles } = Astro.props
 ---
