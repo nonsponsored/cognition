@@ -3,8 +3,9 @@
 	"version": "1.0.3",
 	"private": true,
 	"scripts": {
+        "scss": "sass src/styles:public/assets/css --no-source-map --style compressed",
 		"dev": "astro dev",
-		"build": "astro build",
+		"build": "yarn scss & astro build",
 		"preview": "astro preview"
 	},
 	"devDependencies": {
